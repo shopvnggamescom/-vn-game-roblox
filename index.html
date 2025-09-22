@@ -4,138 +4,132 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>VNGGames — Roblox Shop (Demo)</title>
-
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
 <style>
-  /* ---------- Root & reset ---------- */
+  /* ---------- Reset & root ---------- */
   :root{
-    --bg:#f4f6fb;
-    --white:#ffffff;
-    --muted:#6b7280;
-    --accent:#ff6a2a;
-    --accent-2:#ff4b07;
-    --primary:#1f8fff;
-    --success:#17a661;
-    --card-radius:14px;
-    --shadow: 0 18px 50px rgba(15,23,42,0.08);
-    --glass: rgba(255,255,255,0.85);
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --muted: #6b7280;
+    --primary: #0b72d6;    /* blue close to site */
+    --accent: #ff6a2a;     /* orange accent */
+    --success: #16a34a;
+    --card-radius: 12px;
+    --shadow: 0 18px 50px rgba(15,23,42,0.06);
   }
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:var(--bg);font-family: "Roboto",system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#111}
+  html,body{height:100%;margin:0;background:var(--bg);font-family:Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
 
-  /* ---------- Header ---------- */
+  /* ---------- Topbar/header ---------- */
   .topbar{
-    background:var(--white);
-    border-bottom:1px solid rgba(15,23,42,0.04);
-    position:sticky; top:0; z-index:1200;
-    backdrop-filter: blur(6px);
+    background:var(--panel);
+    border-bottom:1px solid rgba(0,0,0,0.04);
+    position:sticky;top:0;z-index:1200;
   }
-  .container{max-width:1200px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
-  .logo{display:flex;align-items:center;gap:12px}
+  .container{max-width:1180px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .left{display:flex;align-items:center;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px}
   .logo img{width:56px;height:56px;border-radius:10px;object-fit:contain}
   .brand{font-weight:900;font-size:18px}
-  .nav{display:flex;gap:18px;align-items:center;margin-left:12px}
-  .nav a{color:#1b2430;font-weight:600}
-  .search{flex:1;display:flex;align-items:center}
-  .search input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);background:#fafafa}
-  .menu-right{display:flex;gap:10px;align-items:center}
-  .pill{background:var(--white);padding:8px 12px;border-radius:10px;border:1px solid rgba(15,23,42,0.04);font-weight:700}
+  .nav{display:flex;gap:14px;margin-left:8px;align-items:center}
+  .nav a{color:#1f2937;font-weight:600;padding:6px 8px;border-radius:6px}
+  .nav a:hover{background:rgba(15,23,42,0.04)}
+  .search{flex:1}
+  .search input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fafafa}
+
+  .right{display:flex;align-items:center;gap:10px}
+  .pill{background:var(--panel);padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);font-weight:700;display:flex;align-items:center;gap:8px}
+  .login-btn{background:linear-gradient(90deg,var(--accent),#ff4b07);color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer;font-weight:800}
+  .login-btn:active{transform:translateY(1px)}
 
   /* ---------- Hero ---------- */
-  .hero{
-    background: linear-gradient(180deg,#0b72d6,#1f8fff);
-    color:#fff;
-    padding:36px 0 72px;
-  }
-  .hero-inner{max-width:1200px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:20px}
+  .hero{background:linear-gradient(180deg,#0b72d6,#1f8fff);color:#fff;padding:36px 0 80px}
+  .hero-inner{max-width:1180px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:20px}
   .hero-left{flex:1}
-  .hero h1{margin:0;font-size:28px;letter-spacing:-0.5px}
-  .hero p{margin:8px 0 0;color:rgba(255,255,255,0.9)}
+  .hero h1{margin:0;font-size:28px;line-height:1.05}
+  .hero p{margin:8px 0 0;color:rgba(255,255,255,0.92)}
 
-  /* ---------- Card wrapper & login ---------- */
-  .login-wrap{max-width:1100px;margin:-56px auto 18px;padding:0 18px}
-  .card{background:var(--white);border-radius:var(--card-radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(15,23,42,0.03)}
+  /* ---------- Login small card ---------- */
+  .quick-card{background:rgba(255,255,255,0.1);padding:12px;border-radius:12px;backdrop-filter: blur(4px)}
+  .quick-card input{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff}
+
+  /* ---------- Login major card ---------- */
+  .login-wrap{max-width:1180px;margin:-56px auto 18px;padding:0 18px}
+  .card{background:var(--panel);border-radius:var(--card-radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
   .login-card{display:flex;gap:16px;align-items:center;padding:14px}
-  .app-icon{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#0b72d6,#2e9bff);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px}
+  .app-icon{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#2e9bff);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px}
   .login-col{flex:1}
   .login-row{display:flex;gap:12px;align-items:center;margin-top:8px}
-  .login-row input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.06)}
-  .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(255,106,42,0.12)}
-  .btn.light{background:#fff;color:#111;border:1px solid rgba(15,23,42,0.06);box-shadow:none}
+  input[type="text"]{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
+  .btn{background:linear-gradient(90deg,var(--accent),#ff4b07);color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(255,106,42,0.12)}
+  .btn.ghost{background:#fff;color:#111;border:1px solid rgba(0,0,0,0.06)}
 
-  /* ---------- Products grid ---------- */
+  /* ---------- Products area ---------- */
   .page{max-width:1150px;margin:12px auto;padding:12px}
   .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
   .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .pkg{
-    background:linear-gradient(180deg,#fff,#fbfbfb);
-    border-radius:12px;padding:12px;border:1px solid rgba(15,23,42,0.04);
-    display:flex;flex-direction:column;justify-content:space-between;min-height:200px;position:relative;overflow:hidden;
-    transition:transform .18s, box-shadow .18s;
+    background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:space-between;min-height:210px;position:relative;overflow:hidden;cursor:pointer;
+    transition: transform .18s, box-shadow .18s;
   }
-  .pkg:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(16,24,40,0.12)}
-  .pkg-img{height:116px;border-radius:10px;background:linear-gradient(180deg,#0c0c0c,#141414);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .pkg:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(16,24,40,0.08)}
+  .pkg-img{height:126px;border-radius:10px;background:#0c0c0c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
   .pkg-img img{width:100%;height:100%;object-fit:cover;display:block}
-  /* RB badge centered on image */
-  .rb-badge{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    background: linear-gradient(90deg,#ffffffcc,#ffffff99);color:#111;padding:8px 14px;border-radius:999px;font-weight:900;box-shadow:0 6px 18px rgba(0,0,0,0.08)
-  }
+  .rb-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#ffffffcc,#ffffff99);color:#111;padding:8px 14px;border-radius:999px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
   .pkg .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-  .price{font-weight:800}
+  .price{font-weight:900}
   .add-btn{background:var(--primary);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
 
-  /* bottom cart bar */
+  /* ---------- Cart bar ---------- */
   .cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;pointer-events:none;z-index:1000}
-  .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.08);border:1px solid rgba(15,23,42,0.04)}
+  .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
   .cart-icon{width:48px;height:48px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
   .cart-total{font-weight:900}
-  .continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
+  .continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
   .continue-btn.disabled{opacity:0.45;pointer-events:none}
 
-  /* modal */
-  .modal-back{position:fixed;inset:0;background:rgba(3,7,18,0.6);display:none;align-items:center;justify-content:center;z-index:1300;padding:20px}
-  .modal{width:100%;max-width:920px;background:var(--white);border-radius:12px;padding:18px;max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(2,6,23,0.4)}
+  /* ---------- Modal checkout ---------- */
+  .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:1300;padding:20px}
+  .modal{width:100%;max-width:920px;background:var(--panel);border-radius:12px;padding:18px;max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(2,6,23,0.25)}
   .modal .close-x{float:right;background:transparent;border:0;font-weight:700;cursor:pointer;font-size:20px;color:#333}
   .payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-  .pay-item{border:1px solid rgba(15,23,42,0.06);padding:12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
+  .pay-item{border:1px solid rgba(0,0,0,0.06);padding:12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
   .pay-item.active{border-color:var(--primary);box-shadow:0 12px 36px rgba(31,143,255,0.08);transform:translateY(-4px)}
   .more-area{background:#fff;padding:12px;border-radius:8px;margin-top:12px;border:1px solid #f3f3f3}
-  .ghost{background:#fff;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
+  .ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
   .checkout-footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:12px;border-top:1px solid #f2f2f2}
   .pay-success{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
   .check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
   .small{font-size:13px;color:var(--muted)}
 
-  /* flying coins / robux animation */
+  /* ---------- Flying Robux animation ---------- */
   .flying-wrap{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:1400;overflow:hidden}
   .coin{
-    position:absolute;width:36px;height:36px;background:linear-gradient(180deg,#ffd86b,#ffb84a);
-    border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#773800;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;
+    background:linear-gradient(180deg,#ffd86b,#ffb84a);box-shadow:0 6px 18px rgba(0,0,0,0.12);
     transform:translate(-50%,-50%) scale(0);
     animation:flyUp 1.2s forwards cubic-bezier(.2,.9,.2,1);
   }
   @keyframes flyUp{
-    0%{opacity:0; transform:translate(-50%,-50%) scale(0.2)}
+    0%{opacity:0; transform:translate(-50%,-50%) scale(0.2}
     20%{opacity:1; transform:translate(-50%,-200%) scale(1)}
     100%{opacity:0; transform:translate(-50%,-900%) scale(0.25)}
   }
 
-  /* small screens */
-  @media (max-width:900px){
-    .packages{grid-template-columns:repeat(2,1fr)}
-  }
+  /* ---------- Small screens ---------- */
+  @media (max-width:900px){ .packages{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:560px){
     .packages{grid-template-columns:1fr}
-    .search{display:none}
     .hero h1{font-size:22px}
+    .search{display:none}
   }
 
-  /* subtle button shine */
+  /* tiny util */
+  .hidden{display:none}
+  .muted{color:var(--muted)}
   .btn:active{transform:translateY(1px)}
+  @keyframes spin {to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -143,15 +137,12 @@
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="container">
-      <div style="display:flex;align-items:center">
-        <div class="logo">
-          <img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="VNG Logo" />
-        </div>
-        <div class="brand">VNGGAMES<span style="font-weight:500;color:var(--muted);margin-left:8px"> Shop</span></div>
-
-        <nav class="nav" style="margin-left:18px">
+      <div class="left">
+        <div class="logo"><img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="VNG Logo" /></div>
+        <div class="brand">VNGGAMES <span style="font-weight:600;color:var(--muted);margin-left:6px">Shop</span></div>
+        <nav class="nav" aria-label="Main menu">
           <a href="#">Trang chủ</a>
-          <a href="#">Sản phẩm</a>
+          <a href="#">Game</a>
           <a href="#">Hỗ trợ</a>
         </nav>
       </div>
@@ -160,11 +151,9 @@
         <input id="globalSearch" placeholder="Tìm kiếm, hoặc nhập ID Roblox..." />
       </div>
 
-      <div class="menu-right">
-        <div id="menuLogin" class="pill">
-          <button id="openLogin" class="login-btn" style="border-radius:8px;padding:8px 10px">Đăng nhập</button>
-        </div>
-        <div id="userDisplay" class="pill" style="display:none">ID: <span id="userIdText" style="margin-left:6px;font-weight:900"></span></div>
+      <div class="right">
+        <div id="menuLogin" class="pill"><button id="openLogin" class="login-btn">Đăng nhập</button></div>
+        <div id="userDisplay" class="pill" style="display:none">ID: <span id="userIdText" style="margin-left:8px;font-weight:900"></span></div>
       </div>
     </div>
   </div>
@@ -174,29 +163,29 @@
     <div class="hero-inner">
       <div class="hero-left">
         <h1>Roblox — Nạp Robux chính thức</h1>
-        <p>Nạp nhanh qua ZaloPay / VietQR / Thẻ — (Demo bản giao diện). Nhập ID Roblox để bắt đầu.</p>
+        <p>Thanh toán nhanh bằng ZaloPay, VietQR hoặc thẻ. (Bản demo giao diện — không thực hiện giao dịch thật)</p>
       </div>
-      <div style="flex-basis:360px">
-        <!-- quick login small card -->
-        <div class="card" style="padding:12px;background:linear-gradient(180deg,#ffffff88,#ffffff66)">
-          <div style="font-weight:800">Nhanh: Đăng nhập bằng ID</div>
-          <div style="margin-top:8px;display:flex;gap:8px">
-            <input id="quickId" placeholder="ID / Username" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06)"/>
+
+      <div style="flex-basis:380px">
+        <div class="quick-card card">
+          <div style="font-weight:900">Nhanh: Đăng nhập bằng ID</div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <input id="quickId" placeholder="ID / Username" />
             <button id="quickBtn" class="btn" style="padding:8px 12px">Xác nhận</button>
           </div>
-          <div class="small" style="margin-top:8px;color:#333">ID lưu localStorage — giữ trạng thái khi reload.</div>
+          <div class="small" style="margin-top:8px">ID sẽ lưu tạm trên trình duyệt để giữ trạng thái.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- LOGIN & PRODUCTS -->
+  <!-- LOGIN big card -->
   <div class="login-wrap">
     <div class="card login-card">
       <div class="app-icon">🔲</div>
       <div class="login-col">
         <div style="font-weight:900;font-size:18px">Roblox - VNG</div>
-        <div class="small" style="margin-top:6px">Nhập ID / Username Roblox để hiển thị thông tin và nạp.</div>
+        <div class="small" style="margin-top:6px">Nhập ID / Username Roblox để bắt đầu.</div>
 
         <div class="login-row" style="margin-top:10px">
           <input id="robloxId" placeholder="Nhập ID / Username" />
@@ -206,13 +195,13 @@
     </div>
   </div>
 
-  <!-- PRODUCTS GRID -->
+  <!-- PRODUCTS -->
   <div class="page">
     <div class="card">
       <div class="section-title">
         <div>
           <div style="font-weight:900;font-size:18px">Chọn gói Robux</div>
-          <div class="small" style="margin-top:6px">Chọn gói phù hợp và bấm + để thêm vào giỏ</div>
+          <div class="small" style="margin-top:6px">Chọn gói và bấm "Thêm" để vào giỏ — demo.</div>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
           <div class="ghost">ZingCard</div>
@@ -221,7 +210,7 @@
       </div>
 
       <div class="packages" id="packages">
-        <!-- Cards: use IDs for selection -->
+        <!-- template pkg -->
         <div class="pkg" data-id="p55" data-price="20000">
           <div class="pkg-img">
             <img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png" alt="55 RB" />
@@ -272,7 +261,7 @@
         <button id="btnShowMore" class="ghost">Xem thêm</button>
         <div id="moreArea" class="more-area" style="display:none;margin-top:10px">
           <img src="https://i.postimg.cc/kX3Phcvy/Screenshot-2025-09-22-19-47-22-77-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="more" style="width:100%;border-radius:8px" />
-          <div style="margin-top:8px" class="small">Các gói khác & thông tin (bản demo).</div>
+          <div style="margin-top:8px" class="small">Các gói khác & thông tin.</div>
         </div>
       </div>
     </div>
@@ -296,7 +285,7 @@
 
   <!-- CHECKOUT MODAL -->
   <div class="modal-back" id="modalBack">
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true">
       <button class="close-x" id="closeModalBtn">✕</button>
       <h3 style="font-weight:900;margin-top:4px">Thanh toán</h3>
 
@@ -316,10 +305,10 @@
 
         <div id="moreAreaModal" class="more-area" style="display:none">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div class="small"><strong>Chi tiết phương thức</strong></div>
+            <div class="small"><strong>Chi tiết</strong></div>
             <button class="ghost" id="collapseMore">Rút gọn</button>
           </div>
-          <div style="margin-top:8px"><p class="small">ZaloPay, VietQR, ATM, Thẻ tín dụng — demo.</p></div>
+          <div style="margin-top:8px"><p class="small">Các phương thức demo: ZaloPay, VietQR, ATM, Card.</p></div>
         </div>
 
         <div style="margin-top:10px"><button id="btnShowMoreModal" class="ghost">Xem thêm</button></div>
@@ -327,7 +316,7 @@
 
       <div class="checkout-footer">
         <div>
-          <div class="note">Tổng thanh toán</div>
+          <div class="small">Tổng thanh toán</div>
           <div style="font-weight:900;font-size:18px" id="checkoutTotal">0 VND</div>
         </div>
         <div>
@@ -339,23 +328,21 @@
     </div>
   </div>
 
-  <!-- Flying coins / robux layer -->
+  <!-- Flying coins -->
   <div class="flying-wrap" id="flyingWrap"></div>
 
 <script>
-/* ---------- Data ---------- */
+/* ---------- Data & state ---------- */
 const PRODUCTS = {
   p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
   p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
   p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
 };
-
-/* ---------- State ---------- */
-let cart = {};            // { productId: {id, qty} }
+let cart = {};            // { id: {id,qty} }
 let selectedPay = null;
 let loggedUser = null;
 
-/* ---------- Element refs ---------- */
+/* ---------- Refs ---------- */
 const cartTotalText = document.getElementById('cartTotalText');
 const btnOpenCheckout = document.getElementById('btnOpenCheckout');
 const modalBack = document.getElementById('modalBack');
@@ -375,7 +362,6 @@ const quickBtn = document.getElementById('quickBtn');
 const quickId = document.getElementById('quickId');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const payItems = document.querySelectorAll('.pay-item');
-const addBtns = document.querySelectorAll('.add-btn');
 const packagesEl = document.getElementById('packages');
 const flyingWrap = document.getElementById('flyingWrap');
 
@@ -395,11 +381,9 @@ function setLogged(id){
 document.getElementById('btnLogin').addEventListener('click', ()=>{
   const id = robloxInput.value.trim();
   if(!id){ alert('Nhập ID/Username Roblox'); return; }
-  saveLogin(id);
-  setLogged(id);
+  saveLogin(id); setLogged(id);
 });
 openLogin.addEventListener('click', ()=>{
-  // focus input and scroll to it
   robloxInput.focus();
   window.scrollTo({top: robloxInput.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'});
 });
@@ -410,19 +394,17 @@ quickBtn.addEventListener('click', ()=>{
 });
 loadLogin();
 
-/* ---------- Cart logic ---------- */
+/* ---------- Cart UI ---------- */
 function updateCart(){
   const total = Object.values(cart).reduce((s,it)=> s + PRODUCTS[it.id].price * it.qty, 0);
   cartTotalText.textContent = fmt(total);
   checkoutTotal.textContent = fmt(total);
   if(total>0){
-    btnOpenCheckout.classList.remove('disabled');
-    btnOpenCheckout.disabled = false;
-    btnPay.classList.remove('disabled'); btnPay.disabled = false;
+    btnOpenCheckout.classList.remove('disabled'); btnOpenCheckout.disabled=false;
+    btnPay.classList.remove('disabled'); btnPay.disabled=false;
   } else {
-    btnOpenCheckout.classList.add('disabled');
-    btnOpenCheckout.disabled = true;
-    btnPay.classList.add('disabled'); btnPay.disabled = true;
+    btnOpenCheckout.classList.add('disabled'); btnOpenCheckout.disabled=true;
+    btnPay.classList.add('disabled'); btnPay.disabled=true;
   }
   renderCart();
 }
@@ -435,7 +417,4 @@ function renderCart(){
   Object.values(cart).forEach(it=>{
     const p = PRODUCTS[it.id];
     const wrap = document.createElement('div');
-    wrap.style.display='flex'; wrap.style.justifyContent='space-between'; wrap.style.alignItems='center'; wrap.style.padding='10px 0';
-    wrap.innerHTML = `<div>
-      <div style="font-weight:900">${p.title} x${it.qty}</div>
-      <div class="small
+    wrap.style.display='flex'; wrap.style.justifyContent='space-between'; w
