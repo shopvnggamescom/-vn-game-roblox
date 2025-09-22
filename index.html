@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Shop Roblox — VNGGames (Giả lập)</title>
+<title>Shop Roblox — VNGGames (Giả lập full)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --accent:#ff6a2a;       /* main orange */
+    --accent:#ff6a2a;
     --accent-2:#ff4b07;
     --muted:#6f6f6f;
     --card:#ffffff;
@@ -18,25 +18,30 @@
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;background:linear-gradient(180deg,#080808,#0f0f10);color:#111;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  /* header */
-  .topbar{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:90}
+
+  /* Header */
+  .topbar{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100}
   .container{max-width:1150px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
   .logo{display:flex;align-items:center;gap:12px}
-  .logo-img{width:52px;height:52px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#111}
+  .logo-img{width:56px;height:56px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#111}
   .logo-img img{width:100%;height:100%;object-fit:contain}
   .brand{font-weight:800;font-size:18px}
   .search{flex:1}
   .search input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid #eee;background:#fafafa}
-  .user-pill{min-width:80px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee;font-weight:700;padding:0 8px}
-  /* hero bg */
+  .menu-right{display:flex;gap:10px;align-items:center}
+  .user-pill{min-width:120px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee;font-weight:700;padding:0 8px}
+  .login-btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:0;font-weight:800;cursor:pointer}
+
+  /* Hero background */
   .hero{
-    background-image: url("https://www.mediafire.com/convkey/d179/ytxzyvoxmk5l016gkg3v9k3d9zk0y3f9g.jpg");
+    background-image: url("https://i.postimg.cc/kX3Phcvy/Screenshot-2025-09-22-19-47-22-77-40deb401b9ffe8e1df2f1cc5ba480b12.jpg");
     background-position:center;background-size:cover;padding:28px 0 110px;
   }
   .page{max-width:1150px;margin:0 auto;padding:12px}
+
   .card{background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
 
-  /* login */
+  /* Login area */
   .login-wrap{max-width:1020px;margin:-56px auto 18px}
   .login-card{display:flex;gap:16px;align-items:center;padding:14px}
   .app-icon{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#111,#666);display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px}
@@ -46,27 +51,27 @@
   .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 20px rgba(255,106,42,0.12)}
   .btn.ghost{background:#fff;color:#111;border:1px solid #eee}
 
-  /* packages */
+  /* Packages */
   .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
   .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .pkg{background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:10px;padding:12px;border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:space-between;min-height:170px}
   .pkg-img{height:92px;border-radius:8px;background:#0c0c0c;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;overflow:hidden}
-  .pkg-img img{width:100%;height:100%;object-fit:cover}
+  .pkg-img img{width:100%;height:100%;object-fit:cover;display:block}
   .pkg .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
   .badge{background:#fff;padding:6px 8px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);font-weight:700}
   .add-btn{background:var(--accent);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
   .pkg.selected{border-color:rgba(255,106,42,0.18);box-shadow:0 10px 26px rgba(255,106,42,0.05)}
 
   /* bottom cart */
-  .cart-bar{position:fixed;left:0;right:0;bottom:14px;display:flex;justify-content:center;pointer-events:none;z-index:80}
+  .cart-bar{position:fixed;left:0;right:0;bottom:14px;display:flex;justify-content:center;pointer-events:none;z-index:90}
   .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:12px;box-shadow:0 14px 44px rgba(0,0,0,0.18);border:1px solid rgba(0,0,0,0.04)}
   .cart-icon{width:48px;height:48px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
   .cart-total{font-weight:900}
   .continue-btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
   .continue-btn.disabled{opacity:0.45;pointer-events:none}
 
-  /* modal */
-  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.48);display:none;align-items:center;justify-content:center;z-index:99}
+  /* modal checkout */
+  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.48);display:none;align-items:center;justify-content:center;z-index:100}
   .modal{width:94%;max-width:880px;background:#fff;border-radius:12px;padding:16px;max-height:86vh;overflow:auto}
   .close-x{float:right;background:#fff;border:0;font-weight:700;cursor:pointer;font-size:18px;color:#777}
   .payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
@@ -78,10 +83,8 @@
   .success{background:#e8fbef;color:#0a8a3a;padding:12px;border-radius:8px;font-weight:700}
   .note{font-size:13px;color:#999}
 
-  /* success full-screen neat */
-  .pay-success {
-    display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df;
-  }
+  /* fancy success */
+  .pay-success {display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
   .check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
   .order-code{font-weight:800;font-size:16px}
 
@@ -91,45 +94,51 @@
 </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+  <!-- Header -->
   <div class="topbar">
     <div class="container">
       <div class="logo">
-        <div class="logo-img" id="logoImg">
-          <!-- use provided logo image (fallback to text if blocked) -->
-          <img src="https://www.mediafire.com/convkey/6d06/q239ou2do9lavizgkg3v9k3d9zk0y3f9g.png" alt="VNG Logo" onerror="this.style.display='none'"/>
+        <div class="logo-img">
+          <img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="VNG Logo" />
         </div>
         <div class="brand">VNGGAMES <span style="font-weight:500;color:#8a8a8a;margin-left:6px">Shop</span></div>
       </div>
+
       <div class="search"><input id="searchBox" placeholder="Tìm kiếm, hoặc nhập ID Roblox..." /></div>
-      <div id="userDisplay" class="user-pill">VN</div>
+
+      <div class="menu-right">
+        <div id="menuLogin" class="user-pill">
+          <button id="openLogin" class="login-btn" style="border-radius:8px;padding:8px 10px">Đăng nhập</button>
+        </div>
+        <div id="userDisplay" class="user-pill" style="display:none">ID: <span id="userIdText"></span></div>
+      </div>
     </div>
   </div>
 
-  <!-- HERO / LOGIN -->
+  <!-- Hero + login -->
   <div class="hero">
     <div class="login-wrap">
       <div class="card login-card" style="align-items:center">
         <div class="app-icon">🔲</div>
         <div class="login-col">
           <div style="font-weight:800;font-size:20px">Roblox - VNG</div>
-          <div class="small" style="margin-top:6px">1. Đăng nhập bằng ID / Username Roblox</div>
+          <div class="small" style="margin-top:6px">1. Nhập ID / Username Roblox</div>
           <div style="margin-top:10px" class="login-row">
             <input id="robloxId" placeholder="Nhập ID / Username" />
             <button id="btnLogin" class="btn">Xác nhận</button>
           </div>
+          <div class="small" style="margin-top:8px;color:#444">Sau khi xác nhận, menu đăng nhập sẽ ẩn và hiển thị ID ở góc phải.</div>
         </div>
       </div>
     </div>
 
-    <!-- PRODUCTS -->
+    <!-- products -->
     <div class="page">
       <div class="card">
         <div class="section-title">
           <div>
             <div style="font-weight:900;font-size:18px">2. Chọn gói</div>
-            <div class="small" style="margin-top:6px">Chọn gói phù hợp và bấm + để đưa vào giỏ</div>
+            <div class="small" style="margin-top:6px">Chọn gói và bấm + để thêm vào giỏ</div>
           </div>
           <div style="display:flex;gap:8px;align-items:center">
             <div class="ghost">ZingCard</div>
@@ -138,10 +147,9 @@
         </div>
 
         <div class="packages">
-          <!-- 55 -->
           <div class="pkg" id="card-p55" data-id="p55" data-price="20000">
             <div class="pkg-img">
-              <img src="https://www.mediafire.com/convkey/6f57/tikl2rqxnh3ymd5gkg3v9k3d9zk0y3f9g.png" alt="55" />
+              <img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png" alt="55" />
             </div>
             <div style="margin-top:10px">
               <div style="font-weight:900">Gói 55 Robux</div>
@@ -153,10 +161,9 @@
             </div>
           </div>
 
-          <!-- 145 -->
           <div class="pkg" id="card-p145" data-id="p145" data-price="50000">
             <div class="pkg-img">
-              <img src="https://www.mediafire.com/convkey/0d4c/b9jug09ndv7n8rhgkg3v9k3d9zk0y3f9g.png" alt="145" />
+              <img src="https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg" alt="145" />
             </div>
             <div style="margin-top:10px">
               <div style="font-weight:900">Gói 145 Robux</div>
@@ -168,10 +175,9 @@
             </div>
           </div>
 
-          <!-- 300 -->
           <div class="pkg" id="card-p300" data-id="p300" data-price="100000">
             <div class="pkg-img">
-              <img src="https://www.mediafire.com/convkey/4a19/4j79dmqxj20pbfhgkg3v9k3d9zk0y3f9g.png" alt="300" />
+              <img src="https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg" alt="300" />
             </div>
             <div style="margin-top:10px">
               <div style="font-weight:900">Gói 300 Robux</div>
@@ -184,18 +190,17 @@
           </div>
         </div>
 
-        <!-- xem them -->
         <div style="margin-top:12px">
           <button id="btnShowMore" class="ghost" onclick="showMore()">Xem thêm</button>
           <div id="moreArea" class="more-area" style="display:none;margin-top:10px">
-            <!-- use provided screenshot as more area -->
-            <img src="https://www.mediafire.com/convkey/8a2b/dx7hzi7tr10lwcegkg3v9k3d9zk0y3f9g.jpg" alt="more" style="width:100%;border-radius:8px" />
+            <img src="https://i.postimg.cc/kX3Phcvy/Screenshot-2025-09-22-19-47-22-77-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="more" style="width:100%;border-radius:8px" />
             <div style="margin-top:8px" class="small">Các gói khác & thông tin (bản giả lập).</div>
           </div>
         </div>
 
       </div>
     </div>
+
   </div>
 
   <!-- bottom cart -->
@@ -283,19 +288,30 @@ const moreArea = document.getElementById('moreArea');
 const btnLogin = document.getElementById('btnLogin');
 const robloxInput = document.getElementById('robloxId');
 const userDisplay = document.getElementById('userDisplay');
+const menuLogin = document.getElementById('menuLogin');
+const userIdText = document.getElementById('userIdText');
+const openLogin = document.getElementById('openLogin');
 
 /* ---------- Helpers ---------- */
 function fmt(n){ return n.toLocaleString('vi-VN') + ' VND' }
 function genOrderCode(){ return 'ORD-' + Math.random().toString(36).substring(2,9).toUpperCase(); }
 
-/* ---------- Persist login if any ---------- */
-function saveLogin(id){
-  localStorage.setItem('rg_user', id);
-}
+/* ---------- Persist login ---------- */
+function saveLogin(id){ localStorage.setItem('rg_user', id); }
 function loadLogin(){
   const id = localStorage.getItem('rg_user');
-  if(id){ loggedUser = id; userDisplay.textContent = id; const btn = document.getElementById('btnLogin'); if(btn){ btn.textContent='Đã đăng nhập'; btn.disabled=true; btn.classList.add('btn','ghost'); } }
+  if(id){
+    loggedUser = id;
+    showLogged(id);
+  }
 }
+function showLogged(id){
+  menuLogin.style.display = 'none';
+  userDisplay.style.display = 'flex';
+  userIdText.textContent = id;
+}
+
+/* load */
 loadLogin();
 
 /* ---------- Cart UI ---------- */
@@ -332,7 +348,7 @@ function addToCart(id){
   if(!cart[id]) cart[id]={id:id,qty:0};
   cart[id].qty++;
   updateCart();
-  // visual flash
+  // visual flash on card
   const c = document.getElementById('card-' + id);
   if(c){ c.classList.add('selected'); setTimeout(()=>c.classList.remove('selected'),700) }
 }
@@ -364,13 +380,12 @@ function doPay(){
   if(btnPay.classList.contains('disabled')) return;
   payResult.innerHTML='';
   if(selectedPay === 'ZaloPay'){
-    // loader
+    // show loader then success (2s)
     const loader = document.createElement('div');
-    loader.innerHTML = `<div style="display:flex;align-items:center;gap:12px"><div class="small">Chuyển đến ZaloPay...</div><div style="padding:8px 12px;border-radius:8px;background:#fff;border:1px solid #f0f0f0">⏳</div></div>`;
+    loader.innerHTML = `<div style="display:flex;align-items:center;gap:12px"><div class="small">Chuyển tới ZaloPay...</div><div style="padding:8px 12px;border-radius:8px;background:#fff;border:1px solid #f0f0f0">⏳</div></div>`;
     payResult.appendChild(loader);
     btnPay.disabled = true;
     setTimeout(()=>{
-      // success block with order code + nice layout
       const code = genOrderCode();
       payResult.innerHTML = `<div class="pay-success">
         <div class="check-circle"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="#0ba35a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -386,18 +401,6 @@ function doPay(){
       cart = {}; updateCart();
       btnPay.disabled = false;
       // store order into localStorage history (fake)
-      const hist = JSON.parse(localStorage.getItem('rg_orders'||'[]')) || [];
+      const hist = JSON.parse(localStorage.getItem('rg_orders')||'[]');
       hist.unshift({code,amount:checkoutTotal.textContent,method:'ZaloPay',user:loggedUser||'Khách',time: new Date().toISOString()});
-      localStorage.setItem('rg_orders', JSON.stringify(hist.slice(0,20)));
-    }, 2000);
-  } else {
-    payResult.innerHTML = `<div class="success">Thanh toán thành công ✅</div>`;
-    cart = {}; updateCart();
-    setTimeout(()=>{ closeCheckout(); }, 900);
-  }
-}
-
-/* view order (fake) */
-function viewOrder(code){
-  const hist = JSON.parse(localStorage.getItem('rg_orders'||'[]')) || [];
-  const o
+      localStorage.se
