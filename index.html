@@ -3,18 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>VNGGames — Roblox Shop (Fixed)</title>
+<title>VNGGames — Roblox Shop (Full Fixed)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --brand:#e2231a; --accent:#ff7a2b; --success:#16a34a; --card-radius:12px; --shadow: 0 18px 50px rgba(15,23,42,0.06);
+  --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --brand:#e2231a; --accent:#ff7a2b;
+  --success:#16a34a; --card-radius:12px; --shadow:0 18px 50px rgba(15,23,42,0.06);
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 
-/* TOPBAR */
+/* Topbar */
 .topbar{background:var(--panel);border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:1200;box-shadow:0 6px 18px rgba(16,24,40,0.03)}
 .container{max-width:1200px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
 .logo-row{display:flex;align-items:center;gap:14px}
@@ -31,14 +32,14 @@ button{font-family:inherit;cursor:pointer}
 .btn-primary{background:linear-gradient(90deg,var(--brand),#c71a15);color:#fff;padding:9px 14px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(226,35,26,0.12)}
 .ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:8px;cursor:pointer}
 
-/* HERO */
+/* Hero */
 .hero{background-image:url("https://i.postimg.cc/tCjxnPCq/Screenshot-2025-09-22-12-56-23-66-40deb401b9ffe8e1df2f1cc5ba480b12.jpg");background-position:center;background-size:cover;padding:36px 0 86px;color:#fff;display:block}
 .hero-inner{max-width:1200px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between}
 .hero-left{flex:1}
 .hero-left h1{font-size:26px;margin:0;font-weight:800;text-shadow:0 6px 24px rgba(0,0,0,0.35)}
 .hero-left p{margin-top:6px;color:rgba(255,255,255,0.9)}
 
-/* LOGIN CARD */
+/* Login card */
 .login-wrap{max-width:1160px;margin:-60px auto 16px;padding:0 18px}
 .card{background:var(--panel);border-radius:var(--card-radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
 .login-card{display:flex;gap:16px;align-items:center;padding:14px}
@@ -48,7 +49,7 @@ button{font-family:inherit;cursor:pointer}
 .login-row input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
 .small{font-size:13px;color:var(--muted)}
 
-/* PRODUCTS */
+/* Products */
 .page{max-width:1150px;margin:12px auto;padding:12px}
 .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -61,7 +62,7 @@ button{font-family:inherit;cursor:pointer}
 .price{font-weight:900}
 .add-btn{background:var(--brand);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
 
-/* CART BAR */
+/* Cart bar */
 .cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;pointer-events:none;z-index:1000}
 .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
 .cart-icon{width:48px;height:48px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
@@ -69,7 +70,7 @@ button{font-family:inherit;cursor:pointer}
 .continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
 .continue-btn.disabled{opacity:0.45;pointer-events:none}
 
-/* MODAL */
+/* Modal */
 .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:1300;padding:20px}
 .modal{width:100%;max-width:920px;background:var(--panel);border-radius:12px;padding:18px;max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(2,6,23,0.25)}
 .close-x{float:right;background:transparent;border:0;font-weight:700;cursor:pointer;font-size:20px;color:#333}
@@ -94,72 +95,125 @@ button{font-family:inherit;cursor:pointer}
 </style>
 </head>
 <body>
-<!-- HTML + PRODUCTS + CART + MODAL giống như trên, tôi đã kiểm tra hình ảnh và order -->
-<!-- Script -->
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
+<!-- TOPBAR -->
+<div class="topbar">
+<div class="container">
+<div class="logo-row">
+<div class="logo-box"><img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="logo" /></div>
+<div><div class="brand-title">VNGGAMES <span style="font-weight:600;color:var(--muted);margin-left:6px">Shop</span></div><div class="small muted">Nạp Robux</div></div>
+<nav class="top-menu" aria-label="Main">
+<a href="#" class="active">TRANG CHỦ</a>
+<a href="#">NẠP ROBUX</a>
+<a href="#">VẬT PHẨM</a>
+<a href="#">HỖ TRỢ</a>
+</nav>
+</div>
+<div class="search"><input id="globalSearch" placeholder="Tìm kiếm hoặc nhập ID Roblox..." /></div>
+<div class="menu-right">
+<div id="menuLogin" class="pill"><button id="openLogin" class="btn-primary">Đăng nhập</button></div>
+<div id="userDisplay" class="pill" style="display:none">ID: <span id="userIdText" style="margin-left:8px;font-weight:900"></span></div>
+</div>
+</div>
+</div>
 
-const PRODUCTS={
-  p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
-  p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
-  p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
-};
-let cart={},selectedPay=null,loggedUser=null;
+<!-- HERO -->
+<div class="hero" role="img" aria-label="hero">
+<div class="hero-inner">
+<div class="hero-left">
+<h1>Roblox — Nạp Robux chính thức</h1>
+<p>Thanh toán: ZaloPay, Thẻ Zing, VietQR, ATM</p>
+</div>
+<div style="width:360px"></div>
+</div>
+</div>
 
-const cartTotalText=document.getElementById('cartTotalText'),
-btnOpenCheckout=document.getElementById('btnOpenCheckout'),
-modalBack=document.getElementById('modalBack'),
-cartList=document.getElementById('cartList'),
-checkoutTotal=document.getElementById('checkoutTotal'),
-btnPay=document.getElementById('btnPay'),
-payResult=document.getElementById('payResult'),
-btnShowMore=document.getElementById('btnShowMore'),
-moreArea=document.getElementById('moreArea'),
-btnLogin=document.getElementById('btnLogin'),
-robloxInput=document.getElementById('robloxId'),
-userDisplay=document.getElementById('userDisplay'),
-menuLogin=document.getElementById('menuLogin'),
-userIdText=document.getElementById('userIdText'),
-openLogin=document.getElementById('openLogin'),
-closeModalBtn=document.getElementById('closeModalBtn'),
-flyingWrap=document.getElementById('flyingWrap'),
-packagesEl=document.getElementById('packages');
+<!-- LOGIN CARD -->
+<div class="login-wrap">
+<div class="card login-card">
+<div class="app-icon">🔲</div>
+<div class="login-col">
+<div style="font-weight:900;font-size:18px">Đăng nhập Roblox</div>
+<div class="small" style="margin-top:6px">Nhập ID / Username Roblox để bắt đầu.</div>
+<div class="login-row" style="margin-top:10px">
+<input id="robloxId" placeholder="Nhập ID / Username" />
+<button id="btnLogin" class="btn-primary">Xác nhận</button>
+</div>
+</div>
+</div>
+</div>
 
-const fmt=n=>n.toLocaleString('vi-VN')+' VND';
-const saveLogin=id=>localStorage.setItem('vng_user',id);
-const loadLogin=()=>{const id=localStorage.getItem('vng_user');if(id){loggedUser=id;setLogged(id);}};
+<!-- PRODUCTS -->
+<div class="page">
+<div class="card">
+<div class="section-title">
+<div>
+<div style="font-weight:900;font-size:18px">Chọn gói Robux</div>
+<div class="small" style="margin-top:6px">Chọn gói và thêm vào giỏ.</div>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<div class="ghost">Thẻ Zing</div>
+<div class="ghost">ZaloPay / VietQR / ATM</div>
+</div>
+</div>
+<div class="packages" id="packages">
+<!-- Product items inserted dynamically -->
+</div>
+<div style="margin-top:12px">
+<button id="btnShowMore" class="ghost">Xem thêm</button>
+<div id="moreArea" class="more-area" style="display:none;margin-top:10px">
+<img src="https://i.postimg.cc/2jvW5TY9/Screenshot-2025-09-22-12-56-16-07-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="more" style="width:100%;border-radius:8px" />
+<div style="margin-top:8px" class="small">Các gói thêm.</div>
+</div>
+</div>
+</div>
+</div>
 
-function ensureImagesCorrect(){Object.values(PRODUCTS).forEach(p=>{const el=packagesEl.querySelector(`.pkg[data-id="${p.id}"]`);if(el){const img=el.querySelector('.pkg-img img');if(img&&img.src.indexOf(p.img)===-1)img.src=p.img;const badge=el.querySelector('.rb-badge');if(badge)badge.textContent=`${p.amount} RB`;}})}
+<!-- CART BAR -->
+<div class="cart-bar">
+<div class="cart-inner">
+<div style="display:flex;gap:12px;align-items:center">
+<div class="cart-icon">🧺</div>
+<div>
+<div class="small">Tổng tiền</div>
+<div class="cart-total" id="cartTotalText">0 VND</div>
+</div>
+</div>
+<div>
+<button id="btnOpenCheckout" class="continue-btn disabled">Tiếp tục</button>
+</div>
+</div>
+</div>
 
-function setLogged(id){menuLogin.style.display='none';userDisplay.style.display='flex';userIdText.textContent=id;loggedUser=id;}
-if(btnLogin){btnLogin.addEventListener('click',()=>{const id=robloxInput.value.trim();if(!id){alert('Nhập ID/Username Roblox');return;}saveLogin(id);setLogged(id);});}
-if(openLogin){openLogin.addEventListener('click',()=>{robloxInput.focus();window.scrollTo({top:robloxInput.getBoundingClientRect().top+window.pageYOffset-120,behavior:'smooth'});});}
-loadLogin();ensureImagesCorrect();
-
-/* CART */
-function renderCart(){cartList.innerHTML='';if(Object.keys(cart).length===0){cartList.innerHTML='<div class="small">Không có sản phẩm</div>';return;}Object.values(cart).forEach(it=>{const p=PRODUCTS[it.id];const wrap=document.createElement('div');wrap.style.display='flex';wrap.style.justifyContent='space-between';wrap.style.alignItems='center';wrap.style.padding='10px 0';wrap.innerHTML=`<div><div style="font-weight:900">${p.title} x${it.qty}</div><div class="small">${p.amount} Robux</div></div><div style="text-align:right"><div style="font-weight:900">${fmt(p.price*it.qty)}</div><div style="margin-top:8px"><button class="ghost remove-btn" data-remove="${it.id}">Xóa</button></div></div>`;cartList.appendChild(wrap);});cartList.querySelectorAll('.remove-btn').forEach(b=>{if(!b.dataset.bound){b.addEventListener('click',(ev)=>{ev.stopPropagation();removeFromCart(b.getAttribute('data-remove'));});b.dataset.bound='1';}});
-}
-
-function updateCart(){const total=Object.values(cart).reduce((s,it)=>s+(PRODUCTS[it.id]?.price||0)*it.qty,0);cartTotalText.textContent=(total===0?'0 VND':total.toLocaleString('vi-VN')+' VND');checkoutTotal.textContent=(total===0?'0 VND':total.toLocaleString('vi-VN')+' VND');if(total>0){btnOpenCheckout.classList.remove('disabled');btnPay.classList.remove('disabled');}else{btnOpenCheckout.classList.add('disabled');btnPay.classList.add('disabled');}}
-
-function addToCart(pid){cart[pid]?(cart[pid].qty++):cart[pid]={id:pid,qty:1};updateCart();renderCart();flyCoinAnimation();}
-function removeFromCart(pid){delete cart[pid];updateCart();renderCart();}
-
-/* bind product add btn */
-document.querySelectorAll('.add-btn').forEach(b=>{b.addEventListener('click',()=>addToCart(b.dataset.add));});
-
-/* flying coin animation */
-function flyCoinAnimation(){for(let i=0;i<3;i++){const coin=document.createElement('div');coin.className='coin';coin.textContent='💰';coin.style.left=50+Math.random()*100+'%';coin.style.top='50%';flyingWrap.appendChild(coin);setTimeout(()=>coin.remove(),1300);}}
-
-/* checkout modal */
-btnOpenCheckout.addEventListener('click',()=>{if(Object.keys(cart).length>0){modalBack.style.display='flex';}});
-closeModalBtn.addEventListener('click',()=>{modalBack.style.display='none';});
-document.querySelectorAll('.pay-item').forEach(pi=>{pi.addEventListener('click',()=>{document.querySelectorAll('.pay-item').forEach(p=>p.classList.remove('active'));pi.classList.add('active');selectedPay=pi.dataset.pay;});});
-btnPay.addEventListener('click',()=>{if(!loggedUser){alert('Vui lòng đăng nhập');return;}if(!selectedPay){alert('Chọn phương thức thanh toán');return;}payResult.innerHTML=`<div class="pay-success"><div class="check-circle">✔</div><div style="font-weight:900">Thanh toán thành công</div><div class="small">Mã đơn: ${Math.random().toString(36).substring(2,9).toUpperCase()}</div></div>`;cart={};updateCart();renderCart();});
-
-btnShowMore.addEventListener('click',()=>{moreArea.style.display=moreArea.style.display==='none'?'block':'none';});
-
-});
-</script>
-</body>
-</html>
+<!-- MODAL -->
+<div class="modal-back" id="modalBack">
+<div class="modal">
+<button class="close-x" id="closeModalBtn">✕</button>
+<h3 style="font-weight:900;margin-top:4px">Thanh toán</h3>
+<div style="margin-top:12px">
+<div class="small">Giỏ hàng</div>
+<div id="cartList" style="margin-top:10px"></div>
+</div>
+<div style="margin-top:12px">
+<div class="small">Chọn phương thức</div>
+<div class="payment-grid" style="margin-top:10px">
+<div class="pay-item" data-pay="ZingCard">Thẻ Zing</div>
+<div class="pay-item" data-pay="ZaloPay">ZaloPay</div>
+<div class="pay-item" data-pay="VietQR">VietQR</div>
+<div class="pay-item" data-pay="Card">Thẻ / ATM</div>
+</div>
+<div id="moreAreaModal" class="more-area" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div class="small"><strong>Chi tiết phương thức</strong></div>
+<button class="ghost" id="collapseMore">Rút gọn</button>
+</div>
+<div style="margin-top:8px"><p class="small">Các phương thức thanh toán.</p></div>
+</div>
+<div style="margin-top:10px"><button id="btnShowMoreModal" class="ghost">Xem thêm</button></div>
+</div>
+<div class="checkout-footer">
+<div>
+<div class="note small">Tổng thanh toán</div>
+<div style="font-weight:900;font-size:18px" id="checkoutTotal">0 VND</div>
+</div>
+<div>
+<button id="btnPay" class="btn-primary continue-btn disabled
