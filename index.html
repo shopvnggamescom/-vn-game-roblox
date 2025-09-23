@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>VNGGames — Roblox Shop</title>
+<title>VNGGames — Roblox Shop (Fixed)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -12,7 +12,7 @@
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111}
   a{color:inherit;text-decoration:none}
-  button{font-family:inherit}
+  button{font-family:inherit;cursor:pointer}
 
   /* Topbar */
   .topbar{background:var(--panel);border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:1200;box-shadow:0 6px 18px rgba(16,24,40,0.03)}
@@ -82,7 +82,7 @@
   .pay-success{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
   .check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
 
-  /* flying */
+  /* flying animation */
   .flying-wrap{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:1400;overflow:hidden}
   .coin{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(180deg,#ffd86b,#ffb84a);box-shadow:0 6px 18px rgba(0,0,0,0.12);transform:translate(-50%,-50%) scale(0);animation:flyUp 1.2s forwards cubic-bezier(.2,.9,.2,1)}
   @keyframes flyUp{0%{opacity:0;transform:translate(-50%,-50%) scale(0.2)}20%{opacity:1;transform:translate(-50%,-200%) scale(1)}100%{opacity:0;transform:translate(-50%,-900%) scale(0.25)}}
@@ -133,7 +133,6 @@
         <p>Thanh toán: ZaloPay, Thẻ Zing, VietQR, ATM</p>
       </div>
 
-      <!-- removed quick login to avoid duplicate -->
       <div style="width:360px"></div>
     </div>
   </div>
@@ -291,112 +290,110 @@
   <div class="flying-wrap" id="flyingWrap"></div>
 
 <script>
-/* ========= state ========= */
-const PRODUCTS = {
-  p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
-  p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
-  p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
-};
-let cart = {};
-let selectedPay = null;
-let loggedUser = null;
+document.addEventListener('DOMContentLoaded', () => {
 
-/* ========= refs ========= */
-const cartTotalText = document.getElementById('cartTotalText');
-const btnOpenCheckout = document.getElementById('btnOpenCheckout');
-const modalBack = document.getElementById('modalBack');
-const cartList = document.getElementById('cartList');
-const checkoutTotal = document.getElementById('checkoutTotal');
-const btnPay = document.getElementById('btnPay');
-const payResult = document.getElementById('payResult');
-const btnShowMore = document.getElementById('btnShowMore');
-const moreArea = document.getElementById('moreArea');
-const btnLogin = document.getElementById('btnLogin');
-const robloxInput = document.getElementById('robloxId');
-const userDisplay = document.getElementById('userDisplay');
-const menuLogin = document.getElementById('menuLogin');
-const userIdText = document.getElementById('userIdText');
-const openLogin = document.getElementById('openLogin');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const flyingWrap = document.getElementById('flyingWrap');
+  /* ========= state ========= */
+  const PRODUCTS = {
+    p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
+    p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
+    p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
+  };
+  let cart = {};
+  let selectedPay = null;
+  let loggedUser = null;
 
-/* ========= helpers ========= */
-function fmt(n){ return n.toLocaleString('vi-VN') + ' VND'; }
-function genOrderCode(){ return 'ORD-' + Math.random().toString(36).substring(2,9).toUpperCase(); }
-function saveLogin(id){ localStorage.setItem('vng_user', id); }
-function loadLogin(){ const id = localStorage.getItem('vng_user'); if(id){ loggedUser = id; setLogged(id); } }
+  /* ========= refs ========= */
+  const cartTotalText = document.getElementById('cartTotalText');
+  const btnOpenCheckout = document.getElementById('btnOpenCheckout');
+  const modalBack = document.getElementById('modalBack');
+  const cartList = document.getElementById('cartList');
+  const checkoutTotal = document.getElementById('checkoutTotal');
+  const btnPay = document.getElementById('btnPay');
+  const payResult = document.getElementById('payResult');
+  const btnShowMore = document.getElementById('btnShowMore');
+  const moreArea = document.getElementById('moreArea');
+  const btnLogin = document.getElementById('btnLogin');
+  const robloxInput = document.getElementById('robloxId');
+  const userDisplay = document.getElementById('userDisplay');
+  const menuLogin = document.getElementById('menuLogin');
+  const userIdText = document.getElementById('userIdText');
+  const openLogin = document.getElementById('openLogin');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const flyingWrap = document.getElementById('flyingWrap');
+  const packagesEl = document.getElementById('packages');
 
-/* ========= login (single) ========= */
-function setLogged(id){
-  menuLogin.style.display = 'none';
-  userDisplay.style.display = 'flex';
-  userIdText.textContent = id;
-  loggedUser = id;
-}
-document.getElementById('btnLogin').addEventListener('click', ()=>{
-  const id = robloxInput.value.trim();
-  if(!id){ alert('Nhập ID/Username Roblox'); return; }
-  saveLogin(id); setLogged(id);
-});
-openLogin.addEventListener('click', ()=>{
-  robloxInput.focus();
-  window.scrollTo({top: robloxInput.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'});
-});
-loadLogin();
+  /* ========= helpers ========= */
+  const fmt = n => n.toLocaleString('vi-VN') + ' VND';
+  const genOrderCode = () => 'ORD-' + Math.random().toString(36).substring(2,9).toUpperCase();
+  const saveLogin = id => localStorage.setItem('vng_user', id);
+  const loadLogin = () => { const id = localStorage.getItem('vng_user'); if(id) { loggedUser = id; setLogged(id); } };
 
-/* ========= cart UI ========= */
-function updateCart(){
-  const total = Object.values(cart).reduce((s,it)=> s + (PRODUCTS[it.id]?.price||0) * it.qty, 0);
-  cartTotalText.textContent = (total===0? '0 VND' : total.toLocaleString('vi-VN') + ' VND');
-  checkoutTotal.textContent = (total===0? '0 VND' : total.toLocaleString('vi-VN') + ' VND');
-  if(total>0){ btnOpenCheckout.classList.remove('disabled'); btnOpenCheckout.disabled=false; btnPay.classList.remove('disabled'); btnPay.disabled=false; } else { btnOpenCheckout.classList.add('disabled'); btnOpenCheckout.disabled=true; btnPay.classList.add('disabled'); btnPay.disabled=true; }
-  renderCart();
-}
-function renderCart(){
-  cartList.innerHTML = '';
-  if(Object.keys(cart).length===0){
-    cartList.innerHTML = '<div class="small">Không có sản phẩm</div>';
-    return;
+  /* ======= ensure correct images placed (fix swapped ones) ======= */
+  function ensureImagesCorrect(){
+    Object.values(PRODUCTS).forEach(p=>{
+      const el = packagesEl.querySelector(`.pkg[data-id="${p.id}"]`);
+      if(el){
+        const img = el.querySelector('.pkg-img img');
+        if(img && img.src.indexOf(p.img) === -1){
+          img.src = p.img;
+        }
+        const badge = el.querySelector('.rb-badge');
+        if(badge) badge.textContent = `${p.amount} RB`;
+      }
+    });
   }
-  Object.values(cart).forEach(it=>{
-    const p = PRODUCTS[it.id];
-    const wrap = document.createElement('div');
-    wrap.style.display='flex'; wrap.style.justifyContent='space-between'; wrap.style.alignItems='center'; wrap.style.padding='10px 0';
-    wrap.innerHTML = `<div>
-      <div style="font-weight:900">${p.title} x${it.qty}</div>
-      <div class="small">${p.amount} Robux</div>
-    </div>
-    <div style="text-align:right">
-      <div style="font-weight:900">${fmt(p.price*it.qty)}</div>
-      <div style="margin-top:8px"><button class="ghost" onclick="removeFromCart('${it.id}')">Xóa</button></div>
-    </div>`;
-    cartList.appendChild(wrap);
-  });
-}
 
-/* ========= cart ops ========= */
-function addToCart(productId){
-  if(!PRODUCTS[productId]) return;
-  if(!cart[productId]) cart[productId] = {id:productId, qty:0};
-  cart[productId].qty++;
-  updateCart();
-  const el = document.querySelector(`.pkg[data-id="${productId}"]`);
-  if(el){ el.style.transform='translateY(-6px) scale(1.01)'; setTimeout(()=>el.style.transform='',240); }
-}
-function removeFromCart(productId){
-  delete cart[productId];
-  updateCart();
-}
-
-/* bind add buttons via delegation */
-document.addEventListener('click', function(e){
-  const add = e.target.closest('.add-btn');
-  if(add){
-    e.stopPropagation();
-    const id = add.getAttribute('data-add');
-    addToCart(id);
+  /* ========= login ======== */
+  function setLogged(id){
+    menuLogin.style.display = 'none';
+    userDisplay.style.display = 'flex';
+    userIdText.textContent = id;
+    loggedUser = id;
   }
-});
+  if(btnLogin){
+    btnLogin.addEventListener('click', ()=>{
+      const id = robloxInput.value.trim();
+      if(!id){ alert('Nhập ID/Username Roblox'); return; }
+      saveLogin(id); setLogged(id);
+    });
+  }
+  if(openLogin){
+    openLogin.addEventListener('click', ()=>{
+      robloxInput.focus();
+      window.scrollTo({top: robloxInput.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'});
+    });
+  }
+  loadLogin();
 
-/* clicking card area adds one (avoid when click button) */
-document.getElementById('packages').addEventListener('click', functi
+  /* ========= cart UI ========= */
+  function renderCart(){
+    cartList.innerHTML = '';
+    if(Object.keys(cart).length === 0){
+      cartList.innerHTML = '<div class="small">Không có sản phẩm</div>';
+      return;
+    }
+    Object.values(cart).forEach(it=>{
+      const p = PRODUCTS[it.id];
+      const wrap = document.createElement('div');
+      wrap.style.display='flex'; wrap.style.justifyContent='space-between'; wrap.style.alignItems='center'; wrap.style.padding='10px 0';
+      wrap.innerHTML = `<div>
+        <div style="font-weight:900">${p.title} x${it.qty}</div>
+        <div class="small">${p.amount} Robux</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:900">${fmt(p.price*it.qty)}</div>
+        <div style="margin-top:8px"><button class="ghost remove-btn" data-remove="${it.id}">Xóa</button></div>
+      </div>`;
+      cartList.appendChild(wrap);
+    });
+    // bind remove buttons inside cart
+    cartList.querySelectorAll('.remove-btn').forEach(b=>{
+      if(!b.dataset.bound){ b.addEventListener('click', (ev)=>{ ev.stopPropagation(); removeFromCart(b.getAttribute('data-remove')); }); b.dataset.bound = '1'; }
+    });
+  }
+
+  function updateCart(){
+    const total = Object.values(cart).reduce((s,it)=> s + (PRODUCTS[it.id]?.price||0) * it.qty, 0);
+    cartTotalText.textContent = (total===0? '0 VND' : total.toLocaleString('vi-VN') + ' VND');
+    checkoutTotal.textContent = (total===0? '0 VND' : total.toLocaleString('vi-VN') + ' VND');
+    if(total>0){ btnOpenCheckout.classList.remove('disabled'); btnOpenCheckout.disabled=false; btnPay.classList.remove('dis
