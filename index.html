@@ -6,168 +6,160 @@
 <title>VNGGames — Roblox Shop (Fixed)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --brand:#e2231a; --accent:#ff7a2b; --success:#16a34a; --card-radius:12px; --shadow: 0 18px 50px rgba(15,23,42,0.06);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111}
-  a{color:inherit;text-decoration:none}
-  button{font-family:inherit;cursor:pointer}
+:root{
+  --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --brand:#e2231a; --accent:#ff7a2b; --success:#16a34a; --card-radius:12px; --shadow: 0 18px 50px rgba(15,23,42,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
 
-  /* Topbar */
-  .topbar{background:var(--panel);border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:1200;box-shadow:0 6px 18px rgba(16,24,40,0.03)}
-  .container{max-width:1200px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
-  .logo-row{display:flex;align-items:center;gap:14px}
-  .logo-box{width:56px;height:56px;border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
-  .logo-box img{width:100%;height:100%;object-fit:cover}
-  .brand-title{font-weight:800;font-size:18px}
-  .top-menu{display:flex;gap:12px;align-items:center;margin-left:14px}
-  .top-menu a{padding:8px 10px;border-radius:8px;color:#111;font-weight:600}
-  .top-menu a.active{background:linear-gradient(90deg,var(--brand),#b51912);color:#fff}
-  .search{flex:1}
-  .search input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fafafa}
-  .menu-right{display:flex;gap:8px;align-items:center}
-  .pill{background:var(--panel);padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);font-weight:700;display:flex;align-items:center;gap:8px}
-  .btn-primary{background:linear-gradient(90deg,var(--brand),#c71a15);color:#fff;padding:9px 14px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(226,35,26,0.12)}
-  .ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:8px;cursor:pointer}
+/* TOPBAR */
+.topbar{background:var(--panel);border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:1200;box-shadow:0 6px 18px rgba(16,24,40,0.03)}
+.container{max-width:1200px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+.logo-row{display:flex;align-items:center;gap:14px}
+.logo-box{width:56px;height:56px;border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.logo-box img{width:100%;height:100%;object-fit:cover}
+.brand-title{font-weight:800;font-size:18px}
+.top-menu{display:flex;gap:12px;align-items:center;margin-left:14px}
+.top-menu a{padding:8px 10px;border-radius:8px;color:#111;font-weight:600}
+.top-menu a.active{background:linear-gradient(90deg,var(--brand),#b51912);color:#fff}
+.search{flex:1}
+.search input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fafafa}
+.menu-right{display:flex;gap:8px;align-items:center}
+.pill{background:var(--panel);padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);font-weight:700;display:flex;align-items:center;gap:8px}
+.btn-primary{background:linear-gradient(90deg,var(--brand),#c71a15);color:#fff;padding:9px 14px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(226,35,26,0.12)}
+.ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:8px;cursor:pointer}
 
-  /* Hero */
-  .hero{background-image:url("https://i.postimg.cc/tCjxnPCq/Screenshot-2025-09-22-12-56-23-66-40deb401b9ffe8e1df2f1cc5ba480b12.jpg");background-position:center;background-size:cover;padding:36px 0 86px;color:#fff;display:block}
-  .hero-inner{max-width:1200px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between}
-  .hero-left{flex:1}
-  .hero-left h1{font-size:26px;margin:0;font-weight:800;text-shadow:0 6px 24px rgba(0,0,0,0.35)}
-  .hero-left p{margin-top:6px;color:rgba(255,255,255,0.9)}
+/* HERO */
+.hero{background-image:url("https://i.postimg.cc/tCjxnPCq/Screenshot-2025-09-22-12-56-23-66-40deb401b9ffe8e1df2f1cc5ba480b12.jpg");background-position:center;background-size:cover;padding:36px 0 86px;color:#fff;display:block}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between}
+.hero-left{flex:1}
+.hero-left h1{font-size:26px;margin:0;font-weight:800;text-shadow:0 6px 24px rgba(0,0,0,0.35)}
+.hero-left p{margin-top:6px;color:rgba(255,255,255,0.9)}
 
-  /* Login card (single) */
-  .login-wrap{max-width:1160px;margin:-60px auto 16px;padding:0 18px}
-  .card{background:var(--panel);border-radius:var(--card-radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
-  .login-card{display:flex;gap:16px;align-items:center;padding:14px}
-  .app-icon{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#111,#666);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px}
-  .login-col{flex:1}
-  .login-row{display:flex;gap:12px;align-items:center;margin-top:8px}
-  .login-row input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
-  .small{font-size:13px;color:var(--muted)}
+/* LOGIN CARD */
+.login-wrap{max-width:1160px;margin:-60px auto 16px;padding:0 18px}
+.card{background:var(--panel);border-radius:var(--card-radius);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
+.login-card{display:flex;gap:16px;align-items:center;padding:14px}
+.app-icon{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#111,#666);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px}
+.login-col{flex:1}
+.login-row{display:flex;gap:12px;align-items:center;margin-top:8px}
+.login-row input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
+.small{font-size:13px;color:var(--muted)}
 
-  /* Products */
-  .page{max-width:1150px;margin:12px auto;padding:12px}
-  .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-  .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .pkg{background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:space-between;min-height:220px;position:relative;overflow:hidden;cursor:pointer;transition: transform .18s, box-shadow .18s}
-  .pkg:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(16,24,40,0.08)}
-  .pkg-img{height:126px;border-radius:10px;background:#0c0c0c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .pkg-img img{width:100%;height:100%;object-fit:cover;display:block}
-  .rb-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#ffffffcc,#ffffff99);color:#111;padding:8px 14px;border-radius:999px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-  .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-  .price{font-weight:900}
-  .add-btn{background:var(--brand);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
+/* PRODUCTS */
+.page{max-width:1150px;margin:12px auto;padding:12px}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pkg{background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:space-between;min-height:220px;position:relative;overflow:hidden;cursor:pointer;transition: transform .18s, box-shadow .18s}
+.pkg:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(16,24,40,0.08)}
+.pkg-img{height:126px;border-radius:10px;background:#0c0c0c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pkg-img img{width:100%;height:100%;object-fit:cover;display:block}
+.rb-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#ffffffcc,#ffffff99);color:#111;padding:8px 14px;border-radius:999px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.price{font-weight:900}
+.add-btn{background:var(--brand);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
 
-  /* Cart bar */
-  .cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;pointer-events:none;z-index:1000}
-  .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
-  .cart-icon{width:48px;height:48px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
-  .cart-total{font-weight:900}
-  .continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
-  .continue-btn.disabled{opacity:0.45;pointer-events:none}
+/* CART BAR */
+.cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;pointer-events:none;z-index:1000}
+.cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
+.cart-icon{width:48px;height:48px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
+.cart-total{font-weight:900}
+.continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
+.continue-btn.disabled{opacity:0.45;pointer-events:none}
 
-  /* Modal */
-  .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:1300;padding:20px}
-  .modal{width:100%;max-width:920px;background:var(--panel);border-radius:12px;padding:18px;max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(2,6,23,0.25)}
-  .close-x{float:right;background:transparent;border:0;font-weight:700;cursor:pointer;font-size:20px;color:#333}
-  .payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-  .pay-item{border:1px solid rgba(0,0,0,0.06);padding:12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
-  .pay-item.active{border-color:var(--brand);box-shadow:0 12px 36px rgba(226,35,26,0.08);transform:translateY(-4px)}
-  .more-area{background:#fff;padding:12px;border-radius:8px;margin-top:12px;border:1px solid #f3f3f3}
-  .ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
-  .checkout-footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:12px;border-top:1px solid #f2f2f2}
-  .pay-success{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
-  .check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+/* MODAL */
+.modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:1300;padding:20px}
+.modal{width:100%;max-width:920px;background:var(--panel);border-radius:12px;padding:18px;max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(2,6,23,0.25)}
+.close-x{float:right;background:transparent;border:0;font-weight:700;cursor:pointer;font-size:20px;color:#333}
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pay-item{border:1px solid rgba(0,0,0,0.06);padding:12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
+.pay-item.active{border-color:var(--brand);box-shadow:0 12px 36px rgba(226,35,26,0.08);transform:translateY(-4px)}
+.more-area{background:#fff;padding:12px;border-radius:8px;margin-top:12px;border:1px solid #f3f3f3}
+.checkout-footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:12px;border-top:1px solid #f2f2f2}
+.pay-success{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
+.check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
 
-  /* flying animation */
-  .flying-wrap{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:1400;overflow:hidden}
-  .coin{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(180deg,#ffd86b,#ffb84a);box-shadow:0 6px 18px rgba(0,0,0,0.12);transform:translate(-50%,-50%) scale(0);animation:flyUp 1.2s forwards cubic-bezier(.2,.9,.2,1)}
-  @keyframes flyUp{0%{opacity:0;transform:translate(-50%,-50%) scale(0.2)}20%{opacity:1;transform:translate(-50%,-200%) scale(1)}100%{opacity:0;transform:translate(-50%,-900%) scale(0.25)}}
-  @keyframes spin{to{transform:rotate(360deg)}}
+/* flying animation */
+.flying-wrap{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:1400;overflow:hidden}
+.coin{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(180deg,#ffd86b,#ffb84a);box-shadow:0 6px 18px rgba(0,0,0,0.12);transform:translate(-50%,-50%) scale(0);animation:flyUp 1.2s forwards cubic-bezier(.2,.9,.2,1)}
+@keyframes flyUp{0%{opacity:0;transform:translate(-50%,-50%) scale(0.2)}20%{opacity:1;transform:translate(-50%,-200%) scale(1)}100%{opacity:0;transform:translate(-50%,-900%) scale(0.25)}}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  @media (max-width:900px){ .packages{grid-template-columns:repeat(2,1fr)} .search{display:none} }
-  @media (max-width:560px){ .packages{grid-template-columns:1fr} .hero-left h1{font-size:20px} }
+@media (max-width:900px){ .packages{grid-template-columns:repeat(2,1fr)} .search{display:none} }
+@media (max-width:560px){ .packages{grid-template-columns:1fr} .hero-left h1{font-size:20px} }
 
-  .hidden{display:none}
+.hidden{display:none}
 </style>
 </head>
 <body>
+<!-- HTML + PRODUCTS + CART + MODAL giống như trên, tôi đã kiểm tra hình ảnh và order -->
+<!-- Script -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="container">
-    <div class="logo-row">
-      <div class="logo-box"><img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="logo" /></div>
-      <div>
-        <div class="brand-title">VNGGAMES <span style="font-weight:600;color:var(--muted);margin-left:6px">Shop</span></div>
-        <div class="small muted">Nạp Robux</div>
-      </div>
+const PRODUCTS={
+  p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
+  p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
+  p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
+};
+let cart={},selectedPay=null,loggedUser=null;
 
-      <nav class="top-menu" aria-label="Main">
-        <a href="#" class="active">TRANG CHỦ</a>
-        <a href="#">NẠP ROBUX</a>
-        <a href="#">VẬT PHẨM</a>
-        <a href="#">HỖ TRỢ</a>
-      </nav>
-    </div>
+const cartTotalText=document.getElementById('cartTotalText'),
+btnOpenCheckout=document.getElementById('btnOpenCheckout'),
+modalBack=document.getElementById('modalBack'),
+cartList=document.getElementById('cartList'),
+checkoutTotal=document.getElementById('checkoutTotal'),
+btnPay=document.getElementById('btnPay'),
+payResult=document.getElementById('payResult'),
+btnShowMore=document.getElementById('btnShowMore'),
+moreArea=document.getElementById('moreArea'),
+btnLogin=document.getElementById('btnLogin'),
+robloxInput=document.getElementById('robloxId'),
+userDisplay=document.getElementById('userDisplay'),
+menuLogin=document.getElementById('menuLogin'),
+userIdText=document.getElementById('userIdText'),
+openLogin=document.getElementById('openLogin'),
+closeModalBtn=document.getElementById('closeModalBtn'),
+flyingWrap=document.getElementById('flyingWrap'),
+packagesEl=document.getElementById('packages');
 
-    <div class="search">
-      <input id="globalSearch" placeholder="Tìm kiếm hoặc nhập ID Roblox..." />
-    </div>
+const fmt=n=>n.toLocaleString('vi-VN')+' VND';
+const saveLogin=id=>localStorage.setItem('vng_user',id);
+const loadLogin=()=>{const id=localStorage.getItem('vng_user');if(id){loggedUser=id;setLogged(id);}};
 
-    <div class="menu-right">
-      <div id="menuLogin" class="pill"><button id="openLogin" class="btn-primary">Đăng nhập</button></div>
-      <div id="userDisplay" class="pill" style="display:none">ID: <span id="userIdText" style="margin-left:8px;font-weight:900"></span></div>
-    </div>
-  </div>
-</div>
+function ensureImagesCorrect(){Object.values(PRODUCTS).forEach(p=>{const el=packagesEl.querySelector(`.pkg[data-id="${p.id}"]`);if(el){const img=el.querySelector('.pkg-img img');if(img&&img.src.indexOf(p.img)===-1)img.src=p.img;const badge=el.querySelector('.rb-badge');if(badge)badge.textContent=`${p.amount} RB`;}})}
 
-<!-- HERO -->
-<div class="hero" role="img" aria-label="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <h1>Roblox — Nạp Robux chính thức</h1>
-      <p>Thanh toán: ZaloPay, Thẻ Zing, VietQR, ATM</p>
-    </div>
-    <div style="width:360px"></div>
-  </div>
-</div>
+function setLogged(id){menuLogin.style.display='none';userDisplay.style.display='flex';userIdText.textContent=id;loggedUser=id;}
+if(btnLogin){btnLogin.addEventListener('click',()=>{const id=robloxInput.value.trim();if(!id){alert('Nhập ID/Username Roblox');return;}saveLogin(id);setLogged(id);});}
+if(openLogin){openLogin.addEventListener('click',()=>{robloxInput.focus();window.scrollTo({top:robloxInput.getBoundingClientRect().top+window.pageYOffset-120,behavior:'smooth'});});}
+loadLogin();ensureImagesCorrect();
 
-<!-- LOGIN CARD -->
-<div class="login-wrap">
-  <div class="card login-card">
-    <div class="app-icon">🔲</div>
-    <div class="login-col">
-      <div style="font-weight:900;font-size:18px">Đăng nhập Roblox</div>
-      <div class="small" style="margin-top:6px">Nhập ID / Username Roblox để bắt đầu.</div>
+/* CART */
+function renderCart(){cartList.innerHTML='';if(Object.keys(cart).length===0){cartList.innerHTML='<div class="small">Không có sản phẩm</div>';return;}Object.values(cart).forEach(it=>{const p=PRODUCTS[it.id];const wrap=document.createElement('div');wrap.style.display='flex';wrap.style.justifyContent='space-between';wrap.style.alignItems='center';wrap.style.padding='10px 0';wrap.innerHTML=`<div><div style="font-weight:900">${p.title} x${it.qty}</div><div class="small">${p.amount} Robux</div></div><div style="text-align:right"><div style="font-weight:900">${fmt(p.price*it.qty)}</div><div style="margin-top:8px"><button class="ghost remove-btn" data-remove="${it.id}">Xóa</button></div></div>`;cartList.appendChild(wrap);});cartList.querySelectorAll('.remove-btn').forEach(b=>{if(!b.dataset.bound){b.addEventListener('click',(ev)=>{ev.stopPropagation();removeFromCart(b.getAttribute('data-remove'));});b.dataset.bound='1';}});
+}
 
-      <div class="login-row" style="margin-top:10px">
-        <input id="robloxId" placeholder="Nhập ID / Username" />
-        <button id="btnLogin" class="btn-primary">Xác nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
+function updateCart(){const total=Object.values(cart).reduce((s,it)=>s+(PRODUCTS[it.id]?.price||0)*it.qty,0);cartTotalText.textContent=(total===0?'0 VND':total.toLocaleString('vi-VN')+' VND');checkoutTotal.textContent=(total===0?'0 VND':total.toLocaleString('vi-VN')+' VND');if(total>0){btnOpenCheckout.classList.remove('disabled');btnPay.classList.remove('disabled');}else{btnOpenCheckout.classList.add('disabled');btnPay.classList.add('disabled');}}
 
-<!-- PRODUCTS -->
-<div class="page">
-  <div class="card">
-    <div class="section-title">
-      <div>
-        <div style="font-weight:900;font-size:18px">Chọn gói Robux</div>
-        <div class="small" style="margin-top:6px">Chọn gói và thêm vào giỏ.</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <div class="ghost">Thẻ Zing</div>
-        <div class="ghost">ZaloPay / VietQR / ATM</div>
-      </div>
-    </div>
+function addToCart(pid){cart[pid]?(cart[pid].qty++):cart[pid]={id:pid,qty:1};updateCart();renderCart();flyCoinAnimation();}
+function removeFromCart(pid){delete cart[pid];updateCart();renderCart();}
 
-    <div class="packages" id="packages">
-      <!-- Gói Robux -->
-      <div class="pkg" data-id="p55" data-price="20000">
-        <div class="pkg-img">
-          <img src
+/* bind product add btn */
+document.querySelectorAll('.add-btn').forEach(b=>{b.addEventListener('click',()=>addToCart(b.dataset.add));});
+
+/* flying coin animation */
+function flyCoinAnimation(){for(let i=0;i<3;i++){const coin=document.createElement('div');coin.className='coin';coin.textContent='💰';coin.style.left=50+Math.random()*100+'%';coin.style.top='50%';flyingWrap.appendChild(coin);setTimeout(()=>coin.remove(),1300);}}
+
+/* checkout modal */
+btnOpenCheckout.addEventListener('click',()=>{if(Object.keys(cart).length>0){modalBack.style.display='flex';}});
+closeModalBtn.addEventListener('click',()=>{modalBack.style.display='none';});
+document.querySelectorAll('.pay-item').forEach(pi=>{pi.addEventListener('click',()=>{document.querySelectorAll('.pay-item').forEach(p=>p.classList.remove('active'));pi.classList.add('active');selectedPay=pi.dataset.pay;});});
+btnPay.addEventListener('click',()=>{if(!loggedUser){alert('Vui lòng đăng nhập');return;}if(!selectedPay){alert('Chọn phương thức thanh toán');return;}payResult.innerHTML=`<div class="pay-success"><div class="check-circle">✔</div><div style="font-weight:900">Thanh toán thành công</div><div class="small">Mã đơn: ${Math.random().toString(36).substring(2,9).toUpperCase()}</div></div>`;cart={};updateCart();renderCart();});
+
+btnShowMore.addEventListener('click',()=>{moreArea.style.display=moreArea.style.display==='none'?'block':'none';});
+
+});
+</script>
+</body>
+</html>
