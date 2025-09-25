@@ -3,22 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VNGGames — Roblox Shop (Giả lập)</title>
+  <title>VNGGames — Roblox Shop (Fixed)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ===========================
-       THEME & LAYOUT
-       =========================== */
     :root{
-      --bg:#f3f6fb;
-      --panel:#ffffff;
-      --muted:#6b7280;
-      --brand:#e2231a;
-      --accent:#ff7a2b;
-      --success:#16a34a;
-      --card-radius:12px;
-      --shadow: 0 18px 50px rgba(15,23,42,0.06);
-      --glass: rgba(255,255,255,0.6);
+      --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --brand:#e2231a; --accent:#ff7a2b; --success:#16a34a; --card-radius:12px; --shadow: 0 18px 50px rgba(15,23,42,0.06);
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#111}
@@ -72,9 +61,9 @@
     .price{font-weight:900}
     .add-btn{background:var(--brand);color:#fff;border-radius:8px;padding:8px 12px;border:0;cursor:pointer;font-weight:800}
 
-    /* Cart bar */
-    .cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;pointer-events:none;z-index:1000}
-    .cart-inner{width:100%;max-width:1150px;pointer-events:auto;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
+    /* Cart bar - pointer-events fixed so clicks work */
+    .cart-bar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;z-index:1000}
+    .cart-inner{width:100%;max-width:1150px;padding:12px;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;box-shadow:0 20px 60px rgba(13,20,35,0.06);border:1px solid rgba(0,0,0,0.04)}
     .cart-icon{width:48px;height:48px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
     .cart-total{font-weight:900}
     .continue-btn{background:linear-gradient(90deg,var(--accent),var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
@@ -88,6 +77,7 @@
     .pay-item{border:1px solid rgba(0,0,0,0.06);padding:12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
     .pay-item.active{border-color:var(--brand);box-shadow:0 12px 36px rgba(226,35,26,0.08);transform:translateY(-4px)}
     .more-area{background:#fff;padding:12px;border-radius:8px;margin-top:12px;border:1px solid #f3f3f3}
+    .ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
     .checkout-footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:12px;border-top:1px solid #f2f2f2}
     .pay-success{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#f7fffa,#ecfff0);border:1px solid #dff4df}
     .check-circle{width:84px;height:84px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
@@ -102,10 +92,7 @@
     @media (max-width:560px){ .packages{grid-template-columns:1fr} .hero-left h1{font-size:20px} }
 
     .hidden{display:none}
-    /* small helpers */
     .muted{color:var(--muted)}
-    .right{text-align:right}
-    .center{text-align:center}
   </style>
 </head>
 <body>
@@ -114,9 +101,7 @@
   <div class="topbar">
     <div class="container">
       <div class="logo-row">
-        <div class="logo-box">
-          <img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="logo" />
-        </div>
+        <div class="logo-box"><img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="logo" /></div>
         <div>
           <div class="brand-title">VNGGAMES <span style="font-weight:600;color:var(--muted);margin-left:6px">Shop</span></div>
           <div class="small muted">Nạp Robux</div>
@@ -135,7 +120,7 @@
       </div>
 
       <div class="menu-right">
-        <div id="menuLogin" class="pill"><button id="openLogin" class="btn-primary">Đăng nhập</button></div>
+        <div id="menuLogin" class="pill"><button id="openLogin" class="btn-primary" type="button">Đăng nhập</button></div>
         <div id="userDisplay" class="pill" style="display:none">ID: <span id="userIdText" style="margin-left:8px;font-weight:900"></span></div>
       </div>
     </div>
@@ -148,11 +133,12 @@
         <h1>Roblox — Nạp Robux chính thức</h1>
         <p>Thanh toán: ZaloPay, Thẻ Zing, VietQR, ATM</p>
       </div>
+
       <div style="width:360px"></div>
     </div>
   </div>
 
-  <!-- LOGIN CARD -->
+  <!-- SINGLE LOGIN CARD -->
   <div class="login-wrap">
     <div class="card login-card">
       <div class="app-icon">🔲</div>
@@ -162,7 +148,7 @@
 
         <div class="login-row" style="margin-top:10px">
           <input id="robloxId" placeholder="Nhập ID / Username" />
-          <button id="btnLogin" class="btn-primary">Xác nhận</button>
+          <button id="btnLogin" class="btn-primary" type="button">Xác nhận</button>
         </div>
       </div>
     </div>
@@ -183,11 +169,10 @@
       </div>
 
       <div class="packages" id="packages">
-        <!-- correct order: 55 -> 145 -> 300 -->
+        <!-- NOTE: p55/p145 images fixed here to correct mapping -->
         <div class="pkg" data-id="p55" data-price="20000" aria-label="Gói 55 Robux">
           <div class="pkg-img">
-            <!-- image fixed to p55 -->
-            <img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png" alt="55 RB" />
+            <img src="https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg" alt="55 RB" />
             <div class="rb-badge">55 RB</div>
           </div>
           <div style="margin-top:10px">
@@ -196,14 +181,13 @@
           </div>
           <div class="meta">
             <div class="price">20.000đ</div>
-            <div><button class="add-btn" data-add="p55" aria-label="Thêm gói 55">Thêm</button></div>
+            <div><button class="add-btn" data-add="p55" type="button">Thêm</button></div>
           </div>
         </div>
 
         <div class="pkg" data-id="p145" data-price="50000" aria-label="Gói 145 Robux">
           <div class="pkg-img">
-            <!-- image fixed to p145 -->
-            <img src="https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg" alt="145 RB" />
+            <img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png" alt="145 RB" />
             <div class="rb-badge">145 RB</div>
           </div>
           <div style="margin-top:10px">
@@ -212,7 +196,7 @@
           </div>
           <div class="meta">
             <div class="price">50.000đ</div>
-            <div><button class="add-btn" data-add="p145" aria-label="Thêm gói 145">Thêm</button></div>
+            <div><button class="add-btn" data-add="p145" type="button">Thêm</button></div>
           </div>
         </div>
 
@@ -227,13 +211,13 @@
           </div>
           <div class="meta">
             <div class="price">100.000đ</div>
-            <div><button class="add-btn" data-add="p300" aria-label="Thêm gói 300">Thêm</button></div>
+            <div><button class="add-btn" data-add="p300" type="button">Thêm</button></div>
           </div>
         </div>
       </div>
 
       <div style="margin-top:12px">
-        <button id="btnShowMore" class="ghost">Xem thêm</button>
+        <button id="btnShowMore" class="ghost" type="button">Xem thêm</button>
         <div id="moreArea" class="more-area" style="display:none;margin-top:10px">
           <img src="https://i.postimg.cc/2jvW5TY9/Screenshot-2025-09-22-12-56-16-07-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="more" style="width:100%;border-radius:8px" />
           <div style="margin-top:8px" class="small">Các gói thêm.</div>
@@ -253,7 +237,7 @@
         </div>
       </div>
       <div>
-        <button id="btnOpenCheckout" class="continue-btn disabled" aria-disabled="true">Tiếp tục</button>
+        <button id="btnOpenCheckout" class="continue-btn disabled" aria-disabled="true" type="button">Tiếp tục</button>
       </div>
     </div>
   </div>
@@ -261,7 +245,7 @@
   <!-- MODAL CHECKOUT -->
   <div class="modal-back" id="modalBack" role="dialog" aria-hidden="true">
     <div class="modal" role="document">
-      <button class="close-x" id="closeModalBtn" aria-label="Đóng">✕</button>
+      <button class="close-x" id="closeModalBtn" aria-label="Đóng" type="button">✕</button>
       <h3 style="font-weight:900;margin-top:4px">Thanh toán</h3>
 
       <div style="margin-top:12px">
@@ -272,21 +256,21 @@
       <div style="margin-top:12px">
         <div class="small">Chọn phương thức</div>
         <div class="payment-grid" style="margin-top:10px">
-          <div class="pay-item" data-pay="ZingCard">Thẻ Zing</div>
-          <div class="pay-item" data-pay="ZaloPay">ZaloPay</div>
-          <div class="pay-item" data-pay="VietQR">VietQR</div>
-          <div class="pay-item" data-pay="Card">Thẻ / ATM</div>
+          <div class="pay-item" data-pay="ZingCard" tabindex="0">Thẻ Zing</div>
+          <div class="pay-item" data-pay="ZaloPay" tabindex="0">ZaloPay</div>
+          <div class="pay-item" data-pay="VietQR" tabindex="0">VietQR</div>
+          <div class="pay-item" data-pay="Card" tabindex="0">Thẻ / ATM</div>
         </div>
 
         <div id="moreAreaModal" class="more-area" style="display:none">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div class="small"><strong>Chi tiết phương thức</strong></div>
-            <button class="ghost" id="collapseMore">Rút gọn</button>
+            <button class="ghost" id="collapseMore" type="button">Rút gọn</button>
           </div>
           <div style="margin-top:8px"><p class="small">Các phương thức thanh toán giả lập: ZaloPay (demo), Thẻ Zing, VietQR, ATM.</p></div>
         </div>
 
-        <div style="margin-top:10px"><button id="btnShowMoreModal" class="ghost">Xem thêm</button></div>
+        <div style="margin-top:10px"><button id="btnShowMoreModal" class="ghost" type="button">Xem thêm</button></div>
       </div>
 
       <div class="checkout-footer">
@@ -295,7 +279,7 @@
           <div style="font-weight:900;font-size:18px" id="checkoutTotal">0 VND</div>
         </div>
         <div>
-          <button id="btnPay" class="btn-primary continue-btn disabled" aria-disabled="true">Thanh toán ngay</button>
+          <button id="btnPay" class="btn-primary continue-btn disabled" aria-disabled="true" type="button">Thanh toán ngay</button>
         </div>
       </div>
 
@@ -306,99 +290,86 @@
   <!-- flying -->
   <div class="flying-wrap" id="flyingWrap"></div>
 
-  <script>
-  /* =========================
-     MAIN JAVASCRIPT
-     ========================= */
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ========== STATE ==========
+  const PRODUCTS = {
+    // p55 and p145 images corrected (swapped so they are now right)
+    p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
+    p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
+    p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
+  };
+  let cart = {};
+  let selectedPay = null;
+  let loggedUser = null;
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // ========== REFS ==========
+  const packagesEl = document.getElementById('packages');
+  const cartTotalText = document.getElementById('cartTotalText');
+  const btnOpenCheckout = document.getElementById('btnOpenCheckout');
+  const modalBack = document.getElementById('modalBack');
+  const cartList = document.getElementById('cartList');
+  const checkoutTotal = document.getElementById('checkoutTotal');
+  const btnPay = document.getElementById('btnPay');
+  const payResult = document.getElementById('payResult');
+  const btnShowMore = document.getElementById('btnShowMore');
+  const moreArea = document.getElementById('moreArea');
+  const btnLogin = document.getElementById('btnLogin');
+  const robloxInput = document.getElementById('robloxId');
+  const userDisplay = document.getElementById('userDisplay');
+  const menuLogin = document.getElementById('menuLogin');
+  const userIdText = document.getElementById('userIdText');
+  const openLogin = document.getElementById('openLogin');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const flyingWrap = document.getElementById('flyingWrap');
 
-    /* ========= state ========= */
-    const PRODUCTS = {
-      p55:{id:'p55',title:'Gói 55 Robux',price:20000,amount:55,img:'https://i.postimg.cc/rsWXw0MW/1375519572781830144.png'},
-      p145:{id:'p145',title:'Gói 145 Robux',price:50000,amount:145,img:'https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg'},
-      p300:{id:'p300',title:'Gói 300 Robux',price:100000,amount:300,img:'https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg'}
-    };
-    let cart = {};                // {id:{id,qty}}
-    let selectedPay = null;       // 'ZaloPay' etc
-    let loggedUser = null;        // id string
+  // ========== HELPERS ==========
+  const fmt = n => n.toLocaleString('vi-VN') + ' VND';
+  const genOrderCode = () => 'ORD-' + Math.random().toString(36).substring(2,9).toUpperCase();
+  const saveLogin = id => localStorage.setItem('vng_user', id);
+  const loadLogin = () => { const id = localStorage.getItem('vng_user'); if(id) { loggedUser = id; applyLogged(id); } };
 
-    /* ========= refs ========= */
-    const cartTotalText = document.getElementById('cartTotalText');
-    const btnOpenCheckout = document.getElementById('btnOpenCheckout');
-    const modalBack = document.getElementById('modalBack');
-    const cartList = document.getElementById('cartList');
-    const checkoutTotal = document.getElementById('checkoutTotal');
-    const btnPay = document.getElementById('btnPay');
-    const payResult = document.getElementById('payResult');
-    const btnShowMore = document.getElementById('btnShowMore');
-    const moreArea = document.getElementById('moreArea');
-    const btnLogin = document.getElementById('btnLogin');
-    const robloxInput = document.getElementById('robloxId');
-    const userDisplay = document.getElementById('userDisplay');
-    const menuLogin = document.getElementById('menuLogin');
-    const userIdText = document.getElementById('userIdText');
-    const openLogin = document.getElementById('openLogin');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const flyingWrap = document.getElementById('flyingWrap');
-    const packagesEl = document.getElementById('packages');
-    const payItems = Array.from(document.querySelectorAll('.pay-item'));
-
-    /* ========= helpers ========= */
-    function fmt(n){ return n.toLocaleString('vi-VN') + ' VND'; }
-    function genOrderCode(){ return 'ORD-' + Math.random().toString(36).substring(2,9).toUpperCase(); }
-    function saveLogin(id){ localStorage.setItem('vng_user', id); }
-    function loadLogin(){ const id = localStorage.getItem('vng_user'); if(id){ loggedUser = id; applyLogged(id); } }
-
-    /* Fix: ensure images and badges correct (avoid swapped) */
-    function ensureImagesCorrect(){
-      Object.values(PRODUCTS).forEach(p=>{
-        const el = packagesEl.querySelector(`.pkg[data-id="${p.id}"]`);
-        if(el){
-          const img = el.querySelector('.pkg-img img');
-          if(img && !img.src.includes(p.img)) img.src = p.img;
-          const badge = el.querySelector('.rb-badge');
-          if(badge) badge.textContent = `${p.amount} RB`;
-        }
-      });
-    }
-    ensureImagesCorrect();
-
-    /* ========= login logic ========= */
-    function applyLogged(id){
-      menuLogin.style.display = 'none';
-      userDisplay.style.display = 'flex';
-      userIdText.textContent = id;
-      loggedUser = id;
-    }
-    btnLogin.addEventListener('click', ()=>{
-      const id = robloxInput.value.trim();
-      if(!id){
-        alert('Nhập ID/Username Roblox');
-        robloxInput.focus();
-        return;
+  // force correct images & badges (fix swapped)
+  function ensureImagesCorrect(){
+    Object.values(PRODUCTS).forEach(p=>{
+      const el = packagesEl.querySelector(`.pkg[data-id="${p.id}"]`);
+      if(el){
+        const img = el.querySelector('.pkg-img img');
+        if(img && !img.src.includes(p.img)) img.src = p.img;
+        const badge = el.querySelector('.rb-badge');
+        if(badge) badge.textContent = `${p.amount} RB`;
       }
-      saveLogin(id);
-      applyLogged(id);
     });
-    openLogin.addEventListener('click', ()=>{
-      robloxInput.focus();
-      window.scrollTo({top: robloxInput.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'});
-    });
-    loadLogin();
+  }
 
-    /* ========= cart UI ========= */
-    function renderCart(){
-      cartList.innerHTML = '';
-      const keys = Object.keys(cart);
-      if(keys.length === 0){
-        cartList.innerHTML = '<div class="small">Không có sản phẩm</div>';
-        return;
-      }
-      keys.forEach(k=>{
-        const item = cart[k];
-        const p = PRODUCTS[item.id];
-        const wr = document.createElement('div');
-        wr.style.display='flex';
-        wr.style.justifyContent='space-between';
-    
+  // ========== LOGIN ==========
+  function applyLogged(id){
+    menuLogin.style.display = 'none';
+    userDisplay.style.display = 'flex';
+    userIdText.textContent = id;
+    loggedUser = id;
+  }
+  btnLogin.addEventListener('click', (e)=>{
+    const id = robloxInput.value.trim();
+    if(!id){ alert('Nhập ID/Username Roblox'); robloxInput.focus(); return; }
+    saveLogin(id);
+    applyLogged(id);
+  });
+  openLogin.addEventListener('click', ()=>{ robloxInput.focus(); window.scrollTo({top: robloxInput.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'}); });
+  loadLogin();
+
+  // ========== CART UI ==========
+  function renderCart(){
+    cartList.innerHTML = '';
+    const keys = Object.keys(cart);
+    if(keys.length === 0){ cartList.innerHTML = '<div class="small">Không có sản phẩm</div>'; return; }
+    keys.forEach(k=>{
+      const it = cart[k]; const p = PRODUCTS[it.id];
+      const wrap = document.createElement('div');
+      wrap.style.display='flex'; wrap.style.justifyContent='space-between'; wrap.style.alignItems='center'; wrap.style.padding='10px 0';
+      wrap.innerHTML = `<div><div style="font-weight:900">${p.title} x${it.qty}</div><div class="small">${p.amount} Robux</div></div>
+        <div style="text-align:right"><div style="font-weight:900">${fmt(p.price * it.qty)}</div><div style="margin-top:8px"><button class="ghost remove-btn" data-remove="${it.id}" type="button">Xóa</button></div></div>`;
+      cartList.appendChild(wrap);
+    });
+    cartList.querySelectorAll('.remove-btn').forEach(b=>{
+      b.removeEventListener('click', r
