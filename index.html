@@ -1,191 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>VNGGames — Roblox Shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-/* ================== BASE ================== */
-:root {
-  --brand:#e2231a; --accent:#ff7a2b; --success:#16a34a;
-  --bg:#f3f6fb; --panel:#fff; --muted:#6b7280;
-  --radius:12px; --shadow:0 18px 50px rgba(15,23,42,.06);
-}
-*{box-sizing:border-box} html,body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:#111}
-a{text-decoration:none;color:inherit} button{cursor:pointer;font-family:inherit}
-
-/* ================== TOPBAR ================== */
-.topbar{background:var(--panel);border-bottom:1px solid #eee;box-shadow:0 4px 12px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000}
-.container{max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
-.logo img{height:40px}
-.nav{display:flex;gap:14px;margin-left:24px}
-.nav a{padding:8px 12px;border-radius:8px;font-weight:600}
-.nav a.active{background:var(--brand);color:#fff}
-.search{flex:1} .search input{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:8px}
-.menu-right{display:flex;align-items:center;gap:10px}
-.btn{padding:8px 14px;border-radius:8px;border:none;font-weight:700}
-.btn-primary{background:var(--brand);color:#fff}
-.btn-ghost{background:#fff;border:1px solid #ddd}
-
-/* ================== HERO ================== */
-.hero{background:url('https://i.postimg.cc/tCjxnPCq/Screenshot-2025-09-22-12-56-23-66-40deb401b9ffe8e1df2f1cc5ba480b12.jpg') center/cover no-repeat;padding:40px 16px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.hero h1{margin:0;font-size:26px;font-weight:800}
-
-/* ================== LOGIN ================== */
-.login-card{max-width:800px;margin:-40px auto 20px;background:var(--panel);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;gap:16px;align-items:center}
-.login-card input{flex:1;padding:10px;border:1px solid #ddd;border-radius:8px}
-
-/* ================== PACKAGES ================== */
-.page{max-width:1150px;margin:0 auto;padding:16px}
-.section-title{font-weight:800;margin:16px 0}
-.packages{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.pkg{background:#fff;border-radius:var(--radius);padding:12px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:8px;transition:.2s}
-.pkg:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-.pkg img{width:100%;border-radius:8px}
-.rb-badge{position:absolute;top:8px;left:8px;background:rgba(255,255,255,.9);padding:4px 8px;border-radius:6px;font-weight:700}
-.pkg-footer{display:flex;justify-content:space-between;align-items:center}
-
-/* ================== CART BAR ================== */
-.cart-bar{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:12px;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center;z-index:900}
-.cart-total{font-weight:800;font-size:18px}
-
-/* ================== MODAL ================== */
-.modal-back{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
-.modal{background:#fff;border-radius:12px;max-width:600px;width:100%;padding:20px;max-height:90vh;overflow:auto}
-.modal h3{margin-top:0}
-.pay-item{border:1px solid #ddd;padding:10px;border-radius:8px;margin:6px 0;cursor:pointer}
-.pay-item.active{border-color:var(--brand);background:#fff5f5}
-.success-box{background:#f6fff8;border:1px solid #b2f5c4;padding:16px;border-radius:12px;text-align:center}
-.success-box h2{color:var(--success);margin:0}
-
-/* ================== HIDDEN ================== */
-.hidden{display:none}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Robux VNG</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{background:#f4f4f9;color:#333}
+    header{background:#0052cc;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+    header h1{font-size:20px}
+    nav ul{list-style:none;display:flex;gap:20px}
+    nav ul li{cursor:pointer;transition:.3s}
+    nav ul li:hover{color:#ffcc00}
+    .container{max-width:1000px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+    .login-box{padding:20px;background:#eef3ff;border-radius:12px;margin-bottom:20px}
+    .login-box h2{margin-bottom:10px}
+    .login-box input{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;margin-bottom:10px}
+    .login-box button{padding:10px 20px;background:#0052cc;color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.3s}
+    .login-box button:hover{background:#003d99}
+    .packages{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+    .package{border:1px solid #ddd;border-radius:12px;overflow:hidden;background:#fafafa;transition:.3s;cursor:pointer;text-align:center;padding:15px}
+    .package:hover{transform:translateY(-5px);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+    .package img{max-width:80px;margin:0 auto 10px;display:block}
+    .package h3{margin:10px 0}
+    .package button{padding:8px 15px;border:none;background:#28a745;color:#fff;border-radius:8px;cursor:pointer;transition:.3s}
+    .package button:hover{background:#1e7e34}
+    .payment-methods{margin-top:20px;display:none}
+    .payment-methods h2{margin-bottom:10px}
+    .methods{display:flex;gap:20px;flex-wrap:wrap}
+    .method{flex:1 1 150px;border:1px solid #ddd;padding:15px;text-align:center;border-radius:12px;cursor:pointer;transition:.3s;background:#fafafa}
+    .method:hover{background:#eef3ff;transform:translateY(-3px)}
+    .hidden{display:none}
+    /* Popup */
+    .popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;visibility:hidden;opacity:0;transition:.3s;z-index:1000}
+    .popup.active{visibility:visible;opacity:1}
+    .popup-content{background:#fff;padding:30px;border-radius:12px;text-align:center;max-width:400px;width:100%;animation:scaleUp .3s ease}
+    @keyframes scaleUp{from{transform:scale(.7)}to{transform:scale(1)}}
+    .popup-content h2{margin-bottom:15px}
+    .popup-content button{margin-top:15px;padding:10px 20px;background:#0052cc;color:#fff;border:none;border-radius:8px;cursor:pointer}
+    canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999}
+  </style>
 </head>
 <body>
-
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="container">
-    <div class="logo"><img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="">VNGGames Shop</div>
-    <nav class="nav">
-      <a href="#" class="active">Trang chủ</a>
-      <a href="#">Nạp Robux</a>
-      <a href="#">Vật phẩm</a>
-      <a href="#">Hỗ trợ</a>
+  <header>
+    <h1>VNG Robux Shop</h1>
+    <nav>
+      <ul>
+        <li>Trang chủ</li>
+        <li>Nạp Robux</li>
+        <li>Hỗ trợ</li>
+      </ul>
     </nav>
-    <div class="search"><input placeholder="Tìm kiếm game..."></div>
-    <div class="menu-right">
-      <button id="openLogin" class="btn btn-primary">Đăng nhập</button>
-      <div id="userDisplay" class="hidden">ID: <span id="userIdText"></span></div>
+  </header>
+
+  <div class="container">
+    <div class="login-box">
+      <h2>Đăng nhập Roblox ID</h2>
+      <input type="text" id="robloxId" placeholder="Nhập ID Roblox của bạn">
+      <button onclick="login()">Tiếp tục</button>
+    </div>
+
+    <div id="packageSection" class="hidden">
+      <h2>Chọn gói Robux</h2>
+      <div class="packages">
+        <div class="package">
+          <img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png" alt="55 Robux">
+          <h3>55 Robux</h3>
+          <p>Giá: 20.000đ</p>
+          <button onclick="selectPackage('55 Robux')">Mua</button>
+        </div>
+        <div class="package">
+          <img src="https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg" alt="145 Robux">
+          <h3>145 Robux</h3>
+          <p>Giá: 50.000đ</p>
+          <button onclick="selectPackage('145 Robux')">Mua</button>
+        </div>
+        <div class="package">
+          <img src="https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg" alt="400 Robux">
+          <h3>400 Robux</h3>
+          <p>Giá: 150.000đ</p>
+          <button onclick="selectPackage('400 Robux')">Mua</button>
+        </div>
+        <div class="package">
+          <img src="https://i.postimg.cc/fL1QsjnD/images.png" alt="800 Robux">
+          <h3>800 Robux</h3>
+          <p>Giá: 280.000đ</p>
+          <button onclick="selectPackage('800 Robux')">Mua</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="paymentSection" class="payment-methods">
+      <h2>Chọn phương thức thanh toán</h2>
+      <div class="methods">
+        <div class="method" onclick="pay('Thẻ Zing')">Thẻ Zing</div>
+        <div class="method" onclick="pay('ZaloPay')">ZaloPay</div>
+        <div class="method" onclick="pay('MoMo')">MoMo</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- HERO -->
-<div class="hero"><h1>Nạp Robux chính thức</h1><p>Thanh toán qua ZaloPay, Thẻ Zing, ATM</p></div>
-
-<!-- LOGIN -->
-<div class="login-card">
-  <input id="robloxId" placeholder="Nhập ID Roblox">
-  <button id="btnLogin" class="btn btn-primary">Xác nhận</button>
-</div>
-
-<!-- PRODUCTS -->
-<div class="page">
-  <div class="section-title">Chọn gói Robux</div>
-  <div class="packages" id="packages">
-    <div class="pkg" data-id="p55" data-price="20000" data-amount="55" data-title="Gói 55 Robux">
-      <div style="position:relative"><img src="https://i.postimg.cc/V6JP2ZhK/1403347444347047936.jpg"><div class="rb-badge">55 RB</div></div>
-      <div class="pkg-footer"><span>20.000đ</span><button class="btn btn-primary add-btn">Thêm</button></div>
-    </div>
-    <div class="pkg" data-id="p145" data-price="50000" data-amount="145" data-title="Gói 145 Robux">
-      <div style="position:relative"><img src="https://i.postimg.cc/rsWXw0MW/1375519572781830144.png"><div class="rb-badge">145 RB</div></div>
-      <div class="pkg-footer"><span>50.000đ</span><button class="btn btn-primary add-btn">Thêm</button></div>
-    </div>
-    <div class="pkg" data-id="p300" data-price="100000" data-amount="300" data-title="Gói 300 Robux">
-      <div style="position:relative"><img src="https://i.postimg.cc/WpJPnKg3/1403347641449975808.jpg"><div class="rb-badge">300 RB</div></div>
-      <div class="pkg-footer"><span>100.000đ</span><button class="btn btn-primary add-btn">Thêm</button></div>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2 id="popupMessage"></h2>
+      <button onclick="closePopup()">Đóng</button>
     </div>
   </div>
-</div>
 
-<!-- CART -->
-<div class="cart-bar">
-  <div>Tổng: <span class="cart-total" id="cartTotal">0 VND</span></div>
-  <button id="btnCheckout" class="btn btn-primary" disabled>Tiếp tục</button>
-</div>
+  <canvas id="confetti"></canvas>
 
-<!-- CHECKOUT MODAL -->
-<div class="modal-back" id="checkoutModal">
-  <div class="modal">
-    <h3>Thanh toán</h3>
-    <div id="cartList"></div>
-    <div><strong>Phương thức:</strong></div>
-    <div class="pay-item" data-pay="ZaloPay">ZaloPay</div>
-    <div class="pay-item" data-pay="ZingCard">Thẻ Zing</div>
-    <div class="pay-item" data-pay="ATM">ATM</div>
-    <button id="btnPay" class="btn btn-primary" disabled>Thanh toán ngay</button>
-    <div id="payResult"></div>
-    <button onclick="document.getElementById('checkoutModal').style.display='none'" class="btn btn-ghost">Đóng</button>
-  </div>
-</div>
+  <script>
+    let selectedPackage = "";
+    function login(){
+      let id = document.getElementById("robloxId").value.trim();
+      if(id===""){alert("Vui lòng nhập ID Roblox");return;}
+      document.getElementById("packageSection").classList.remove("hidden");
+    }
+    function selectPackage(pkg){
+      selectedPackage = pkg;
+      document.getElementById("paymentSection").style.display="block";
+    }
+    function pay(method){
+      if(selectedPackage===""){alert("Chưa chọn gói Robux");return;}
+      document.getElementById("popupMessage").innerText = 
+        "Bạn đã mua thành công " + selectedPackage + " bằng " + method + "!";
+      document.getElementById("popup").classList.add("active");
+      startConfetti();
+    }
+    function closePopup(){
+      document.getElementById("popup").classList.remove("active");
+      stopConfetti();
+    }
 
-<script>
-let cart = []; let userId=null; let payMethod=null;
-const fmt=n=>n.toLocaleString('vi-VN')+" VND";
-
-/* LOGIN */
-document.getElementById("btnLogin").onclick=()=>{
-  const v=document.getElementById("robloxId").value.trim();
-  if(!v) return alert("Nhập ID Roblox");
-  userId=v;
-  document.getElementById("openLogin").style.display="none";
-  document.getElementById("userDisplay").classList.remove("hidden");
-  document.getElementById("userIdText").innerText=v;
-};
-
-/* ADD TO CART */
-document.querySelectorAll(".add-btn").forEach(b=>{
-  b.onclick=()=>{
-    const pkg=b.closest(".pkg");
-    cart=[{id:pkg.dataset.id,title:pkg.dataset.title,price:+pkg.dataset.price,amount:pkg.dataset.amount}];
-    document.getElementById("cartTotal").innerText=fmt(+pkg.dataset.price);
-    document.getElementById("btnCheckout").disabled=false;
-  };
-});
-
-/* CHECKOUT */
-document.getElementById("btnCheckout").onclick=()=>{
-  const list=document.getElementById("cartList"); list.innerHTML="";
-  cart.forEach(p=>{ list.innerHTML+=`<p>${p.title} - ${fmt(p.price)}</p>` });
-  document.getElementById("checkoutModal").style.display="flex";
-};
-
-/* SELECT PAY */
-document.querySelectorAll(".pay-item").forEach(el=>{
-  el.onclick=()=>{
-    document.querySelectorAll(".pay-item").forEach(i=>i.classList.remove("active"));
-    el.classList.add("active"); payMethod=el.dataset.pay;
-    document.getElementById("btnPay").disabled=false;
-  };
-});
-
-/* PAY */
-document.getElementById("btnPay").onclick=()=>{
-  if(!userId) return alert("Hãy đăng nhập trước");
-  const p=cart[0]; const code="GD"+Math.floor(Math.random()*1e12);
-  document.getElementById("payResult").innerHTML=`
-    <div class="success-box">
-      <h2>THANH TOÁN THÀNH CÔNG</h2>
-      <p>ID: ${userId}</p>
-      <p>Gói: ${p.title}</p>
-      <p>Mã GD: ${code}</p>
-      <p>PTTT: ${payMethod}</p>
-    </div>`;
-};
-</script>
+    // Confetti animation
+    const confetti=document.getElementById("confetti");
+    const ctx=confetti.getContext("2d");
+    let confettis=[],animation;
+    function resizeCanvas(){confetti.width=window.innerWidth;confetti.height=window.innerHeight;}
+    window.addEventListener("resize",resizeCanvas);resizeCanvas();
+    function ConfettiParticle(){this.x=Math.random()*confetti.width;this.y=Math.random()*confetti.height-confetti.height;this.r=Math.random()*6+4;this.d=Math.random()*confetti.height;this.color="hsl("+Math.random()*360+",100%,50%)";this.tilt=Math.random()*10-10;this.tiltAngle=0;this.tiltAngleIncremental=Math.random()*0.07+0.05;this.draw=function(){ctx.beginPath();ctx.lineWidth=this.r/2;ctx.strokeStyle=this.color;ctx.moveTo(this.x+this.tilt+this.r/3,this.y);ctx.lineTo(this.x+this.tilt,this.y+this.tilt+this.r/5);ctx.stroke();}}
+    function startConfetti(){confettis=[];for(let i=0;i<150;i++){confettis.push(new ConfettiParticle());}animation=requestAnimationFrame(draw);}
+    function draw(){ctx.clearRect(0,0,confetti.width,confetti.height);for(let i=0;i<confettis.length;i++){let p=confettis[i];p.tiltAngle+=p.tiltAngleIncremental;p.y+= (Math.cos(p.d)+3+p.r/2)/2;p.x+=Math.sin(p.d);p.tilt=Math.sin(p.tiltAngle- i/3)*15; if(p.y>confetti.height){p.y=-10;p.x=Math.random()*confetti.width;}p.draw();}animation=requestAnimationFrame(draw);}
+    function stopConfetti(){cancelAnimationFrame(animation);ctx.clearRect(0,0,confetti.width,confetti.height);}
+  </script>
 </body>
-  </html>
+</html>
